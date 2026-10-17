@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "kind": "sanitized_final_fresh_demo_QA",
+  "synthetic": true,
+  "checked_date": "2026-10-17",
+  "passed": true,
+  "checks_passed": 18,
+  "checks_total": 18,
+  "coverage": {
+    "submitted": 4,
+    "processed": 4,
+    "failed": 0,
+    "duplicates": 0,
+    "pages": 8
+  },
+  "control_statuses": {
+    "data_location": "partial_evidence",
+    "backup_location": "conflicting_evidence",
+    "deletion": "not_evidenced",
+    "access_review": "partial_evidence",
+    "incident_response": "partial_evidence",
+    "evidence_currency": "evidence_found"
+  },
+  "source_files": [
+    {
+      "name": "policy-v3.pdf",
+      "sha256": "d6679f631290b6c259ad3ef350b6b26f7a067a9bfc412339fca735daed7f8556",
+      "pages": 3,
+      "original_and_private_cloud_bytes_verified": true
+    },
+    {
+      "name": "questionnaire-202610.pdf",
+      "sha256": "049514b758db709dd4c797ea6d91d022265f6efb3f01d8395355e10ec5643d19",
+      "pages": 2,
+      "original_and_private_cloud_bytes_verified": true
+    },
+    {
+      "name": "backup-inventory-202610.pdf",
+      "sha256": "027ced4de34dd41c402ff7f440cdf1c08245c5034926bb739e9d221a7bf40798",
+      "pages": 2,
+      "original_and_private_cloud_bytes_verified": true
+    },
+    {
+      "name": "evidence-register-202610.pdf",
+      "sha256": "30f617aa5e29917f85b81e1c0fa6e5ead4225e304fd8f1b3a689ecbbafee299e",
+      "pages": 1,
+      "original_and_private_cloud_bytes_verified": true
+    }
+  ],
+  "citations": {
+    "total": 17,
+    "literal_on_cited_pages": 17,
+    "normalization": "Whitespace only; no paraphrase/fuzzy matching."
+  },
+  "reviewer_and_export": {
+    "decision": "clarification_requested",
+    "control": "backup_location",
+    "note_followup_timestamp_history_preserved": true,
+    "other_decisions_unreviewed": 5,
+    "PDF_export_pages": 5,
+    "all_findings_and_explanations_preserved": true
+  },
+  "fresh_analysis": {
+    "model": "gemini-3.8-flash",
+    "duration_seconds": 59.783,
+    "calls": 7,
+    "input_tokens": 13433,
+    "output_tokens": 4988,
+    "estimated_cost_usd": 0.057559,
+    "cache_hits": 0,
+    "reconciliation_cache_hits": 0
+  },
+  "cloud_verification": {
+    "authoritative_review_matches_export": true,
+    "index_matches_authoritative_revision": true,
+    "worker_completed_on_corrected_image": true,
+    "shared_ledger_growth_matches_this_run": true,
+    "estimated_cost_full_precision_usd": 0.0575595
+  },
+  "currency_support": "The current questionnaire retires the January response; the current inventory supersedes July; the register dates the current questionnaire 10 October and inventory 12 October. Source pages confirm the same production service within the policy window. References to absent primary/access/incident artifacts do not supply those artifacts.",
+  "other_validation": {
+    "offline_tests_passed": 79,
+    "live_checks_passed": 115,
+    "scale_documents": 106,
+    "scale_pages": 110,
+    "scale_caveat": "Initial attempt processed all sources but two control responses exceeded the citation-count schema. One targeted retry reused 106 extractions and four findings, made two new calls, and completed. Not a first-pass success or a general accuracy measurement."
+  },
+  "history_disclosure": "An earlier four-document run incorrectly treated missing currency observations as missing evidence. The deterministic fallback was corrected to require human review when applicable sources exist but a cited date/version assessment is absent. A cached corrective rerun made no new model calls. This receipt concerns a separate fresh run in which the extractor supplied actual currency support.",
+  "limitations": [
+    "One fresh four-document synthetic run, not a generalized 6/6 accuracy claim.",
+    "Currency evidence_found concerns dates/version applicability; it does not clear the backup conflict or supply missing operational artifacts.",
+    "The questionnaire is a vendor claim, even though its date/version is relevant to currency.",
+    "Analysis duration excludes upload/queue/reviewer/export wall time.",
+    "PDF text/export integrity checked here; final video visual QA remains separate.",
+    "Read-only cloud audit; no model requests or cloud mutations.",
+    "Counts describe distinct tests/checks, not independent accuracy trials or a security certification.",
+    "No identity UID, private review/document IDs, project/bucket identifiers, job IDs, runtime paths, credentials or raw provider payloads are included."
+  ]
+}

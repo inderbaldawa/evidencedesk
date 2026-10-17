@@ -33,3 +33,7 @@ An additional reviewer who did not author the extraction/reconciliation pipeline
 ## Still separate verification work
 
 Cloud deployment, real identity isolation, fresh deployed analysis, final public links require their own recorded checks. Adversarial files exist, but fixture generation does not prove their behavior through the deployed API. Do not infer a legal-compliance score or real-world time savings from these results.
+
+## Final deployed demonstration
+
+The [fresh deployed run](cloud-final-demo-verification.public.json) processed four synthetic PDFs/eight pages with seven real model calls and no cache hits. Independent review passed 18 checks, including all 17 exact quotations and saved decision/export persistence. See the receipt for bounded results and the earlier currency fallback correction. The [170-second public video](https://drive.google.com/file/d/1G-S7X98fVB-zbEihmDhxyEEypMlNVUyt/view) demonstrates this run; signed-out playback was checked.

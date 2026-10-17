@@ -1,7 +1,7 @@
 {
-  "snapshot_stage": "final_review",
-  "generated_at": "2026-10-17T06:41:59.642873+00:00",
-  "source_file_count": 287,
+  "snapshot_stage": "published_submission_source",
+  "generated_at": "2026-10-17T07:32:42.017265+00:00",
+  "source_file_count": 312,
   "files": [
     {
       "path": ".env.example",
@@ -20,8 +20,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9683,
-      "sha256": "a2ae240c0d54115a17aa5ce45704b2525e0816917fbe51877cf7062e638b2e8e"
+      "bytes": 10208,
+      "sha256": "294bce4720336b9387990941221166fc38c78010c9c8e4efb9f1488b666c6467"
     },
     {
       "path": "app/backend/__init__.py",
@@ -1365,8 +1365,8 @@
     },
     {
       "path": "evals/README.md",
-      "bytes": 5322,
-      "sha256": "d120e5413a646329c740359579dd7e15f82b3e6faa3b7c4c21871d40a5d5154e"
+      "bytes": 5863,
+      "sha256": "4cc539e274151fdf1a3f310d7004acde22e240503ec0e1d56e2967513cc93e15"
     },
     {
       "path": "evals/cloud-auth-verification.public.json",
@@ -1392,6 +1392,11 @@
       "path": "evals/cloud-currency-corrected-verification.md",
       "bytes": 2471,
       "sha256": "a1cede517538e6519f108294138c44254a4006d11772f0ba02410d653510c581"
+    },
+    {
+      "path": "evals/cloud-final-demo-verification.public.json",
+      "bytes": 4461,
+      "sha256": "7d91be4d0d516fa376c760abc6ffc11d5257ae4eda422005b1d5cd83add11ecb"
     },
     {
       "path": "evals/compact-actual.public.json",
@@ -1559,6 +1564,5 @@
       "sha256": "3b1e20badd32ef8bb22c35e199df4d6ca0c846c347e1f99957288a23065972bc"
     }
   ],
-  "credential_scan_findings": 0,
-  "release_note": "Deployed source, authentication hardening and conservative currency fallback; existing sanitized Git history retained."
+  "credential_scan_findings": 0
 }

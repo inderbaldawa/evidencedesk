@@ -6,7 +6,7 @@ EvidenceDesk is a focused vendor-evidence review prototype for financial-service
 
 The demonstration is entirely synthetic. Aster Finance requires its customer-data backups to remain in India. Nimbus Support's questionnaire claims they do. Its current production inventory records a backup replica in Singapore. The discrepancy involves the same vendor, service, environment and period. India-only storage is this fictional buyer's internal requirement, not a universal legal requirement.
 
-[Open the live prototype](https://evidencedesk-web-hrndvaqjba-el.a.run.app) · Synthetic evidence only
+[Open the live prototype](https://evidencedesk-web-hrndvaqjba-el.a.run.app) · [Watch the 2:50 demonstration](https://drive.google.com/file/d/1G-S7X98fVB-zbEihmDhxyEEypMlNVUyt/view) · Synthetic evidence only
 
 ![Synthetic backup review: buyer requirement, vendor claim and operational record side by side](docs/screenshots/deployed-three-source.png)
 
@@ -26,7 +26,7 @@ The controls cover primary data location, backup location, completed deletion ev
 
 This repository contains implementation source, offline tests, a deterministic synthetic corpus, reviewed real model results and deployment scripts. The compact run matched all six expected outcomes; the 106-document run matched all six after a disclosed two-control retry. A fresh local HTTP test verified failure handling, session isolation and exports. See [evaluation status](evals/README.md) for measured usage, source-level checks and limitations.
 
-The Cloud Run prototype is deployed. Its public sample and source PDFs are available. A deployed verification passed 115 resource, authentication, isolation, persistence and export checks. A separate four-PDF browser run executed the real cloud worker; its currency fallback was subsequently corrected to request human review when extraction omitted a date/version assessment. See [cloud authentication checks](evals/cloud-auth-verification.public.json), [the initial browser-run audit](evals/cloud-browser-verification.md) and [the verified correction](evals/cloud-currency-corrected-verification.json). Public video and final competition artifacts remain separate release steps. Infrastructure scripts print plans until an operator configures and explicitly applies them.
+The Cloud Run prototype is deployed. Its public sample and source PDFs are available. A deployed verification passed 115 resource, authentication, isolation, persistence and export checks. A separate four-PDF browser run executed the real cloud worker; its currency fallback was subsequently corrected to request human review when extraction omitted a date/version assessment. See [cloud authentication checks](evals/cloud-auth-verification.public.json), [the initial browser-run audit](evals/cloud-browser-verification.md) and [the verified correction](evals/cloud-currency-corrected-verification.json). The [published 170-second demonstration](https://drive.google.com/file/d/1G-S7X98fVB-zbEihmDhxyEEypMlNVUyt/view) is publicly viewable and was checked in a signed-out Incognito window. A separate final fresh four-PDF run passed 18 independent checks, including all 17 exact quotations, reviewer decisions, export and cloud persistence; see [the sanitized fresh-run receipt](evals/cloud-final-demo-verification.public.json). These checks concern this specific synthetic run, not general accuracy. Infrastructure scripts print plans until an operator configures and explicitly applies them.
 
 ## Run locally
 
