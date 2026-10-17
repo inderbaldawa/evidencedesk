@@ -11,6 +11,7 @@ if target.exists():
     raise SystemExit('infra/.stage already exists; inspect and move it aside before creating a fresh build context.')
 files = list((root / 'app/backend').glob('*.py'))
 files += [root / 'app/requirements.lock']
+files += [p for p in (root / 'data/demo-packs').rglob('*') if p.is_file() and p.suffix in {'.pdf','.json'}]
 files += [root / 'app/frontend' / name for name in ('package.json', 'package-lock.json', 'index.html', 'tsconfig.json', 'vite.config.ts')]
 files += [p for p in (root / 'app/frontend/src').rglob('*') if p.is_file() and p.suffix in {'.ts', '.tsx', '.css', '.svg'}]
 files += [root / 'infra' / name for name in ('Dockerfile', 'cloudbuild.yaml')]
@@ -25,4 +26,4 @@ for source in sorted(files):
 (target / '.gcloudignore').write_text('.git\n')
 (target / 'BUILD_MANIFEST.json').write_text(json.dumps(manifest,indent=2)+'\n')
 print(f'Prepared {len(files)} allowlisted files in {target}')
-print('Review BUILD_MANIFEST.json before upload. No credentials, PDF corpus, local runtime, video or approval logs are included.')
+print('Review BUILD_MANIFEST.json before upload. Only the labeled synthetic demo PDFs are included; no credentials, private files, local runtime, video or approval logs are included.')

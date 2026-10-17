@@ -21,6 +21,7 @@ RUN python -m pip install --no-cache-dir --no-index --find-links=/wheels -r requ
     && rm -rf /wheels \
     && useradd --uid 10001 --create-home evidencedesk
 COPY app/backend /srv/app/backend
+COPY data/demo-packs /srv/data/demo-packs
 COPY --from=frontend /build/dist /srv/app/frontend/dist
 USER 10001
 EXPOSE 8080

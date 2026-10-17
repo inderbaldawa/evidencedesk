@@ -1,0 +1,153 @@
+{
+  "synthetic": true,
+  "dispatch_cap": 20,
+  "dispatch_attempts": 14,
+  "ledger_before": {
+    "calls": 77,
+    "input_tokens": 208124,
+    "output_tokens": 81403,
+    "cost_usd": 0.9227084999999996,
+    "outstanding_reservations": 0
+  },
+  "ledger_after": {
+    "calls": 91,
+    "input_tokens": 233237,
+    "output_tokens": 90248,
+    "cost_usd": 1.0267154999999997,
+    "outstanding_reservations": 0
+  },
+  "ledger_delta": {
+    "calls": 14,
+    "input_tokens": 25113,
+    "output_tokens": 8845,
+    "cost_usd": 0.10400700000000007
+  },
+  "runs": [
+    {
+      "policy_pack_id": "security-assurance",
+      "status": "complete",
+      "coverage": {
+        "submitted": 3,
+        "processed": 3,
+        "failed": 0,
+        "duplicates": 0,
+        "pages": 3
+      },
+      "wall_seconds": 53.639,
+      "runner_error_type": null,
+      "usage": {
+        "calls": 7,
+        "input_tokens": 12646,
+        "output_tokens": 4466,
+        "estimated_cost_usd": 0.052464,
+        "duration_seconds": 53.395,
+        "cache_hits": 0,
+        "reconciliation_cache_hits": 0
+      },
+      "controls_match_selected_pack": true,
+      "all_citations_literal": true,
+      "citations_checked": 18,
+      "findings": [
+        {
+          "control_id": "privileged_access",
+          "status": "evidence_found",
+          "explanation": "The policy requires all privileged production accounts to have a named owner and a monthly access review signed off by an approver. Operational records from operational-record.pdf confirm that the October 2026 review was completed on 12 October 2026 for 12 privileged production accounts, documenting assigned owners, an approver, and removal of a departed operator account, corroborating the vendor claim."
+        },
+        {
+          "control_id": "mfa_enforcement",
+          "status": "conflicting_evidence",
+          "explanation": "The vendor claims in questionnaire.pdf (page 1) that all interactive privileged production accounts enforce MFA with no bypass exceptions. However, operational configuration export AUTH-2026-10 in operational-record.pdf (page 1) indicates that while 11 interactive privileged accounts enforce MFA, the breakglass-admin account has an active MFA bypass without an approved exception and was used interactively on 11 October 2026."
+        },
+        {
+          "control_id": "vulnerability_remediation",
+          "status": "evidence_found",
+          "explanation": "The policy requires critical production vulnerabilities to be remediated and retested within seven calendar days of discovery. Operational records confirm that the sole critical finding in the period (VULN-41) was discovered on 3 October 2026, resolved on 6 October 2026, and retested on 7 October 2026, satisfying the seven-day timeline."
+        },
+        {
+          "control_id": "security_testing",
+          "status": "partial_evidence",
+          "explanation": "The vendor asserts that a scoped security test was completed in September, and operational records acknowledge test report TEST-2026-09. However, the standalone report, identified findings, and follow-up remediation evidence were omitted from the provided documentation."
+        },
+        {
+          "control_id": "incident_response",
+          "status": "evidence_found",
+          "explanation": "The buyer requirement mandates an incident-response configuration that requires notification within 24 hours of discovery and includes a monitored buyer contact. The vendor claimed adherence to this configuration in their questionnaire, and operational records from operational-record.pdf page 1 confirm response configuration IR-12 was verified on 12 October 2026, establishing notification within 24 hours of discovery to the monitored buyer address."
+        },
+        {
+          "control_id": "evidence_currency",
+          "status": "evidence_found",
+          "explanation": "The requirement mandates that evidence identifies Cedar Operations, Managed Support Service, and the production environment, dated within 90 days of 15 October 2026 without being superseded. In operational-record.pdf (page 1), the current operations register was issued on 12 October 2026, explicitly superseding the prior July register and covering the named production service during October 2026. This is further corroborated by the questionnaire issued on 10 October 2026."
+        }
+      ],
+      "source_sha256": {
+        "policy.pdf": "4629d1ce30639b26438129da3182d8fc055e5854b237b7dafc693cf600fd33a4",
+        "questionnaire.pdf": "7c3a58432baee1def40f837434f1c551871f3540e2a452f8d0faddb6b09dd588",
+        "operational-record.pdf": "58ecc569d454ee3982c58a4713e214681b58f8a330a8086fc204ffdbc70bfbfa"
+      },
+      "errors_count": 0
+    },
+    {
+      "policy_pack_id": "ai-vendor",
+      "status": "complete",
+      "coverage": {
+        "submitted": 3,
+        "processed": 3,
+        "failed": 0,
+        "duplicates": 0,
+        "pages": 3
+      },
+      "wall_seconds": 49.145,
+      "runner_error_type": null,
+      "usage": {
+        "calls": 7,
+        "input_tokens": 12467,
+        "output_tokens": 4379,
+        "estimated_cost_usd": 0.051543,
+        "duration_seconds": 48.85,
+        "cache_hits": 0,
+        "reconciliation_cache_hits": 0
+      },
+      "controls_match_selected_pack": true,
+      "all_citations_literal": true,
+      "citations_checked": 18,
+      "findings": [
+        {
+          "control_id": "training_use",
+          "status": "evidence_found",
+          "explanation": "The vendor claims that customer prompts and outputs are excluded from model training in questionnaire.pdf (page 1). This is corroborated by operational record operational-record.pdf (page 1), which confirms that configuration AI-CONFIG-12 was verified on 12 October 2026 with training_use set to false for customer prompts and outputs in the production service."
+        },
+        {
+          "control_id": "data_retention",
+          "status": "conflicting_evidence",
+          "explanation": "While the vendor claims in questionnaire.pdf (page 1) that all prompts, outputs, and diagnostic logs with customer content are deleted within seven days, operational-record.pdf (page 1) indicates that diagnostic log stream diag-content is configured to retain full customer prompts for 45 days. Furthermore, an operational check found a 1 September 2026 diagnostic log with customer prompts still present on 12 October 2026, directly contradicting the vendor claim and violating the seven-day retention limit."
+        },
+        {
+          "control_id": "human_oversight",
+          "status": "evidence_found",
+          "explanation": "The policy requires human agent approval for every AI-drafted reply prior to sending, evidenced by workflow configuration and review records. The vendor states that every AI-drafted reply requires approval, which is confirmed by operational records showing workflow version 4 configured with auto_send set to false and an audit log demonstrating all 20 drafted replies had agent approval timestamps before sending."
+        },
+        {
+          "control_id": "model_change_notice",
+          "status": "evidence_found",
+          "explanation": "The vendor claimed compliance with the advance notice and approval process in questionnaire.pdf on page 1. Operational records in operational-record.pdf on page 1 confirm change MC-07 provided nine days of advance notice (notified 1 October 2026, deployed 10 October 2026) and recorded buyer approval on 3 October 2026 prior to deployment."
+        },
+        {
+          "control_id": "subprocessor_disclosure",
+          "status": "partial_evidence",
+          "explanation": "The vendor asserts in questionnaire.pdf (page 1) that it maintains a current subprocessor register, but notes it was not attached. Furthermore, operational-record.pdf (page 1) confirms that the downstream-provider register was requested but is missing from the packet, leaving providers unidentified and unverified."
+        },
+        {
+          "control_id": "evidence_currency",
+          "status": "evidence_found",
+          "explanation": "The requirement mandates current evidence for Lantern AI's Support Reply Assistant production environment dated within 90 days of 15 October 2026. The vendor questionnaire is dated 10 October 2026 and covers October 2026 production operations. This is supported by an operational evidence register dated 12 October 2026, which supersedes prior July records and specifically covers configuration, workflow, and change records for the production service in October 2026."
+        }
+      ],
+      "source_sha256": {
+        "policy.pdf": "7b1a0d091e1c3bf3e5f14a5985e00c0ef2c9eee697229a47dcc84c41045ed8f7",
+        "questionnaire.pdf": "7aaa74379923e48436e5528b6b517a1a63edbec95f78d1f3a65ccbe90c2e8d6f",
+        "operational-record.pdf": "8abd4fd10c1a84a9172c12a41ff51867b1390e9a86f5cf2e85b66a7182731a4b"
+      },
+      "errors_count": 0
+    }
+  ]
+}

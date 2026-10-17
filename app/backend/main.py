@@ -6,7 +6,7 @@ import secrets
 import threading
 import uuid
 from pathlib import Path
-from fastapi import FastAPI, Request, Response, HTTPException, UploadFile, File
+from fastapi import FastAPI, Request, Response, HTTPException, UploadFile, File, Form
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -14,6 +14,7 @@ from .store import get_store,new_review,public_review,now
 from .documents import ingest_pdf,coverage,MAX_BYTES
 from .report import export_pdf
 from .cloud_store import ReviewLeaseLost, DispatchUncertain
+from .workspace import register, validate_links, stamp_document, pack, DocumentKind
 
 app=FastAPI(title='EvidenceDesk',docs_url=None,redoc_url=None)
 store=get_store()
@@ -139,7 +140,8 @@ def clone_sample(request:Request):
     if not original:raise HTTPException(503,'Sample analysis is not ready yet.')
     if not store.take_limit(who+':create',10):raise HTTPException(429,'Daily review creation limit reached.')
     review=copy.deepcopy(original)
-    review.update(id=uuid.uuid4().hex,_owner=who,created_at=now(),updated_at=now(),read_only=False)
+    review.update(id=uuid.uuid4().hex,_owner=who,created_at=now(),updated_at=now(),read_only=False,project_id='',company_id='')
+    review.pop('_analysis_history',None)
     for f in review['findings']:f.update(reviewer={'decision':'unreviewed','note':'','at':None},history=[])
     store.put(review)
     return public_review(review)
@@ -151,20 +153,27 @@ class CreateReview(BaseModel):
     environment:str=Field(default='production',max_length=60)
     period:str=Field(default='2026-10',max_length=60)
     policy_version:str=Field(default='v3.0',max_length=60)
+    project_id:str=Field(default='',max_length=64)
+    company_id:str=Field(default='',max_length=64)
+    policy_pack_id:str=Field(default='data-handling',max_length=60)
 
 @app.post('/api/reviews')
 def create(body:CreateReview,request:Request):
     who=owner(request)
     if not store.take_limit(who+':create',10):raise HTTPException(429,'Daily review creation limit reached.')
-    review=new_review(who,**body.model_dump());store.put(review)
+    selected=pack(body.policy_pack_id)
+    validate_links(store.workspace_get(who),body.project_id,body.company_id)
+    review=new_review(who,**body.model_dump(),policy_pack_version=selected['version']);review['synthetic']=False;store.put(review)
     return public_review(review)
 
 @app.get('/api/reviews/{review_id}')
 def get_review(review_id:str,request:Request):return public_review(owned(review_id,request),review_id=='sample')
 
 @app.post('/api/reviews/{review_id}/documents')
-async def upload(review_id:str,request:Request,files:list[UploadFile]=File(...)):
+async def upload(review_id:str,request:Request,files:list[UploadFile]=File(...),company_id:str|None=Form(default=None),document_kind:DocumentKind=Form(default='other')):
     review=owned(review_id,request,True);idle(review)
+    selected_company=company_id if company_id is not None else review.get('company_id','')
+    validate_links(store.workspace_get(owner(request)),review.get('project_id',''),selected_company)
     if len(files)>20:raise HTTPException(400,'Upload at most 20 PDFs at once.')
     if len(review['documents'])+len(files)>150:raise HTTPException(400,'Review limit is 150 documents.')
     payload=[]
@@ -173,10 +182,12 @@ async def upload(review_id:str,request:Request,files:list[UploadFile]=File(...))
         payload.append((Path(file.filename or 'document.pdf').name,data))
     def add(r):
         idle(r)
+        if len(r['documents'])+len(payload)>150:raise HTTPException(400,'Review limit is 150 documents.')
         known={d['sha256']:d['id'] for d in r['documents'] if d['status'] not in ('failed','duplicate')}
         for name,data in payload:
-            d=ingest_pdf(name,data,store,review_id,known);r['documents'].append(d)
+            d=ingest_pdf(name,data,store,review_id,known);stamp_document(d,selected_company,document_kind);r['documents'].append(d)
             if d['status'] not in ('failed','duplicate'):known[d['sha256']]=d['id']
+        r['synthetic']=False
         r['coverage']=coverage(r)
         r['status']='incomplete'
         r['events'].append({'at':now(),'type':'uploaded','message':f'{len(payload)} documents received. Run analysis to update findings.'})
@@ -237,6 +248,8 @@ def export(review_id:str,request:Request,format:str='json'):
         return Response(json.dumps(review,indent=2),media_type='application/json',headers={'Content-Disposition':'attachment; filename="evidencedesk-review.json"'})
     if format=='pdf':return Response(export_pdf(review),media_type='application/pdf',headers={'Content-Disposition':'attachment; filename="evidencedesk-review.pdf"'})
     raise HTTPException(400,'Choose pdf or json.')
+
+register(app,lambda:store,owner,owned,idle)
 
 dist=Path(__file__).resolve().parents[1]/'frontend'/'dist'
 if dist.exists():app.mount('/',StaticFiles(directory=dist,html=True),name='frontend')

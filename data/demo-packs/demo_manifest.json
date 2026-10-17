@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "synthetic": true,
+  "description": "Fictional buyer-policy review packs. Not legal frameworks. No expected model findings are embedded.",
+  "packs": {
+    "data-handling": {
+      "project": "Data handling demo",
+      "policy_pack_id": "data-handling",
+      "policy_pack_version": "1.0",
+      "vendor": "Nimbus Support",
+      "service": "Customer Support Platform",
+      "environment": "production",
+      "period": "2026-10",
+      "policy_version": "3.0",
+      "files": [
+        {
+          "name": "policy-v3.pdf",
+          "path": "data/demo-packs/data-handling/policy-v3.pdf",
+          "role": "policy",
+          "sha256": "d6679f631290b6c259ad3ef350b6b26f7a067a9bfc412339fca735daed7f8556",
+          "pages": 3,
+          "synthetic": true
+        },
+        {
+          "name": "questionnaire-202610.pdf",
+          "path": "data/demo-packs/data-handling/questionnaire-202610.pdf",
+          "role": "questionnaire",
+          "sha256": "049514b758db709dd4c797ea6d91d022265f6efb3f01d8395355e10ec5643d19",
+          "pages": 2,
+          "synthetic": true
+        },
+        {
+          "name": "backup-inventory-202610.pdf",
+          "path": "data/demo-packs/data-handling/backup-inventory-202610.pdf",
+          "role": "operational-record",
+          "sha256": "027ced4de34dd41c402ff7f440cdf1c08245c5034926bb739e9d221a7bf40798",
+          "pages": 2,
+          "synthetic": true
+        }
+      ]
+    },
+    "security-assurance": {
+      "project": "Security assurance demo",
+      "vendor": "Cedar Operations",
+      "service": "Managed Support Service",
+      "environment": "production",
+      "period": "2026-10",
+      "policy_version": "1.0",
+      "policy_pack_id": "security-assurance",
+      "policy_pack_version": "1.0",
+      "files": [
+        {
+          "name": "policy.pdf",
+          "path": "data/demo-packs/security-assurance/policy.pdf",
+          "role": "policy",
+          "sha256": "4629d1ce30639b26438129da3182d8fc055e5854b237b7dafc693cf600fd33a4",
+          "pages": 1,
+          "synthetic": true
+        },
+        {
+          "name": "questionnaire.pdf",
+          "path": "data/demo-packs/security-assurance/questionnaire.pdf",
+          "role": "questionnaire",
+          "sha256": "7c3a58432baee1def40f837434f1c551871f3540e2a452f8d0faddb6b09dd588",
+          "pages": 1,
+          "synthetic": true
+        },
+        {
+          "name": "operational-record.pdf",
+          "path": "data/demo-packs/security-assurance/operational-record.pdf",
+          "role": "operational-record",
+          "sha256": "58ecc569d454ee3982c58a4713e214681b58f8a330a8086fc204ffdbc70bfbfa",
+          "pages": 1,
+          "synthetic": true
+        }
+      ]
+    },
+    "ai-vendor": {
+      "project": "AI vendor review demo",
+      "vendor": "Lantern AI",
+      "service": "Support Reply Assistant",
+      "environment": "production",
+      "period": "2026-10",
+      "policy_version": "1.0",
+      "policy_pack_id": "ai-vendor",
+      "policy_pack_version": "1.0",
+      "files": [
+        {
+          "name": "policy.pdf",
+          "path": "data/demo-packs/ai-vendor/policy.pdf",
+          "role": "policy",
+          "sha256": "7b1a0d091e1c3bf3e5f14a5985e00c0ef2c9eee697229a47dcc84c41045ed8f7",
+          "pages": 1,
+          "synthetic": true
+        },
+        {
+          "name": "questionnaire.pdf",
+          "path": "data/demo-packs/ai-vendor/questionnaire.pdf",
+          "role": "questionnaire",
+          "sha256": "7aaa74379923e48436e5528b6b517a1a63edbec95f78d1f3a65ccbe90c2e8d6f",
+          "pages": 1,
+          "synthetic": true
+        },
+        {
+          "name": "operational-record.pdf",
+          "path": "data/demo-packs/ai-vendor/operational-record.pdf",
+          "role": "operational-record",
+          "sha256": "8abd4fd10c1a84a9172c12a41ff51867b1390e9a86f5cf2e85b66a7182731a4b",
+          "pages": 1,
+          "synthetic": true
+        }
+      ]
+    }
+  }
+}

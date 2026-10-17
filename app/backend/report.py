@@ -15,7 +15,7 @@ def export_pdf(review):
     styles.add(ParagraphStyle(name='Label',fontName='Helvetica-Bold',fontSize=10,leading=14,textColor=colors.HexColor('#174ea6'),spaceAfter=6,keepWithNext=True))
     def p(text,style='Evidence'):return Paragraph(escape(str(text)).replace('\n','<br/>'),styles[style])
     story=[p('EvidenceDesk | Evidence review pack','Title'),Spacer(1,10),p(review['name'],'Heading2'),
-      p('SYNTHETIC DEMONSTRATION DATA - Analyst evidence review, not legal certification.'),
+      p(('SYNTHETIC DEMONSTRATION DATA - ' if review.get('synthetic') else '')+'Analyst evidence review, not legal certification.'),
       p(f"Vendor: {review['vendor']} | Service: {review['service']} | Environment: {review['environment']}"),
       p(f"Review period: {review['period']} | Policy: {review['policy_version']} | State: {review['status']}"),
       p(f"Generated: {now()} | Review ID: {review['id']}"),Spacer(1,8)]
@@ -37,10 +37,12 @@ def export_pdf(review):
     story.extend([Spacer(1,12),p('Document manifest and unresolved items','Heading2')])
     for d in review['documents']:
         story.extend([p(f"{d['name']} | {d['status']} | {d['page_count']} pages",'Label'),p('SHA-256: '+d['sha256'])])
+        story.append(p(f"Version {d.get('version_number',1)} | {'Current' if d.get('is_current',True) else 'Historical / staged'} | Extraction: {d.get('extraction_method','Not extracted')}"))
+        if d.get('ocr',{}).get('warning'):story.append(p(d['ocr']['warning']))
         if d.get('error'):story.append(p('Unresolved: '+d['error']))
     def footer(canvas,doc):
         canvas.setFont('Helvetica',8);canvas.setFillColor(colors.HexColor('#526175'))
-        canvas.drawString(42,26,'EvidenceDesk | Synthetic demonstration | Source-linked evidence review')
+        canvas.drawString(42,26,'EvidenceDesk | '+('Synthetic demonstration | ' if review.get('synthetic') else '')+'Source-linked evidence review')
         canvas.drawRightString(A4[0]-42,26,f'Page {doc.page}')
     SimpleDocTemplate(stream,pagesize=A4,rightMargin=42,leftMargin=42,topMargin=38,bottomMargin=45,title='EvidenceDesk evidence pack').build(story,onFirstPage=footer,onLaterPages=footer)
     return stream.getvalue()

@@ -8,6 +8,7 @@ import time
 import uuid
 from .store import get_store, now
 from .documents import coverage, extract_document
+from .versioning import snapshot, document_versions, failed_latest_replacement
 
 logger = logging.getLogger(__name__)
 HEARTBEAT_SECONDS = 20
@@ -19,6 +20,8 @@ def process(review_id, store=None):
     review = store.get(review_id)
     if not review:
         raise ValueError('Unknown review')
+
+    previous_snapshot=snapshot(review) if review.get('findings') else None
 
     def progress(event):
         def save(r):
@@ -40,13 +43,23 @@ def process(review_id, store=None):
 
     try:
         def start(r):
+            if previous_snapshot:
+                # Freeze legacy evidence references before parsing can activate a replacement.
+                r.setdefault('analysis',{}).setdefault('document_versions',previous_snapshot['document_versions'])
+                r['analysis'].setdefault('snapshot_id',previous_snapshot['id'])
             r['status'] = 'processing'
             r['events'].append({'at': now(), 'type': 'processing', 'message': 'Gemini is extracting and reconciling source evidence.'})
         store.update(review_id, start)
         for source in review['documents']:
-            if source.get('_blob') and not source.get('pages') and source['status'] == 'pending':
+            if (source.get('is_current',True) or source.get('replacement_pending')) and source.get('_blob') and not source.get('pages') and source['status'] == 'pending':
                 extracted = extract_document(copy.deepcopy(source), store)
                 def save_source(r):
+                    if extracted.get('replacement_pending'):
+                        extracted['replacement_pending']=False
+                        extracted['is_current']=bool(extracted.get('pages'))
+                        if extracted['is_current']:
+                            for old in r['documents']:
+                                if old['id']==extracted['_replaces']:old['is_current']=False
                     for i, document in enumerate(r['documents']):
                         if document['id'] == extracted['id']:
                             r['documents'][i] = extracted
@@ -57,14 +70,18 @@ def process(review_id, store=None):
         current = store.get(review_id)
         result = analyze_review(current, current['documents'], progress=progress)
         def finish(r):
-            if r.get('findings'):
-                r.setdefault('_analysis_history', []).append({'analysis': r.get('analysis'), 'findings': copy.deepcopy(r['findings'])})
+            if previous_snapshot:
+                history=r.setdefault('_analysis_history', [])
+                if not any(item.get('id')==previous_snapshot['id'] for item in history):history.append(previous_snapshot)
+                r['_analysis_history']=history[-20:]
             r['findings'] = result['findings']
             r['analysis'] = result['analysis']
             r['analysis']['stale'] = False
+            r['analysis']['snapshot_id']=uuid.uuid4().hex
+            r['analysis']['document_versions']=document_versions(current)
             r['documents'] = result.get('documents', r['documents'])
             r['coverage'] = coverage(r)
-            r['status'] = 'incomplete' if not result['analysis'].get('complete', False) or r['coverage']['failed'] or any(d['status'] in ('pending', 'processing') for d in r['documents']) else 'complete'
+            r['status'] = 'incomplete' if not result['analysis'].get('complete', False) or r['coverage']['failed'] or failed_latest_replacement(r['documents']) or any(d['status'] in ('pending', 'processing') for d in r['documents'] if d.get('is_current',True)) else 'complete'
             if r.get('_analysis_run_id'):
                 r['_completed_run_id'] = r['_analysis_run_id']
             r['events'].append({'at': now(), 'type': 'completed', 'message': 'Analysis completed. Review the evidence and record your decision.'})
@@ -107,6 +124,10 @@ class LeaseBoundStore:
         if review_id != self.review_id:
             raise ValueError('Worker can update only its assigned review.')
         return self.store.update(review_id, fn, lease_token=self.token)
+
+    def take_limit(self, owner, maximum=5, amount=1):
+        self._check()
+        return self.store.take_limit(owner, maximum, amount=amount)
 
     def read_blob(self, key):
         self._check()

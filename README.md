@@ -2,11 +2,11 @@
 
 **Catch the gap between what a vendor promises and what its documents prove.**
 
-EvidenceDesk is a focused vendor-evidence review prototype for financial-services risk and operations analysts. It compares a buyer's internal policy with vendor questionnaires and operational records, opens the supporting source passages, and preserves the analyst's decision in an exportable evidence pack.
+EvidenceDesk is a vendor evidence review workspace for risk, procurement and operations teams. It compares a buyer's internal policy with vendor questionnaires and operational records, opens the supporting source passages, and preserves the analyst's decision in an exportable evidence pack.
 
 The demonstration is entirely synthetic. Aster Finance requires its customer-data backups to remain in India. Nimbus Support's questionnaire claims they do. Its current production inventory records a backup replica in Singapore. The discrepancy involves the same vendor, service, environment and period. India-only storage is this fictional buyer's internal requirement, not a universal legal requirement.
 
-[Open the live prototype](https://evidencedesk-web-hrndvaqjba-el.a.run.app) · [Watch the 2:50 demonstration](https://drive.google.com/file/d/1G-S7X98fVB-zbEihmDhxyEEypMlNVUyt/view) · Synthetic evidence only
+[Open the live prototype](https://evidencedesk-web-hrndvaqjba-el.a.run.app) · [Watch the earlier 2:50 demonstration](https://drive.google.com/file/d/1G-S7X98fVB-zbEihmDhxyEEypMlNVUyt/view) · Synthetic evidence only
 
 ![Synthetic backup review: buyer requirement, vendor claim and operational record side by side](docs/screenshots/deployed-three-source.png)
 
@@ -15,7 +15,7 @@ The demonstration is entirely synthetic. Aster Finance requires its customer-dat
 ## What the workflow covers
 
 1. Upload text-based PDFs into a scoped vendor review.
-2. Extract document evidence and reconcile it against six controls using Gemini.
+2. Extract document evidence and reconcile it against the selected pack’s six controls using Gemini.
 3. Inspect exact quotations and source pages beside each finding.
 4. Accept a finding, request clarification or mark it unresolved, with a note.
 5. Export PDF or JSON containing review scope, coverage, findings and reviewer decisions.
@@ -27,6 +27,18 @@ The controls cover primary data location, backup location, completed deletion ev
 This repository contains implementation source, offline tests, a deterministic synthetic corpus, reviewed real model results and deployment scripts. The compact run matched all six expected outcomes; the 106-document run matched all six after a disclosed two-control retry. A fresh local HTTP test verified failure handling, session isolation and exports. See [evaluation status](evals/README.md) for measured usage, source-level checks and limitations.
 
 The Cloud Run prototype is deployed. Its public sample and source PDFs are available. A deployed verification passed 115 resource, authentication, isolation, persistence and export checks. A separate four-PDF browser run executed the real cloud worker; its currency fallback was subsequently corrected to request human review when extraction omitted a date/version assessment. See [cloud authentication checks](evals/cloud-auth-verification.public.json), [the initial browser-run audit](evals/cloud-browser-verification.md) and [the verified correction](evals/cloud-currency-corrected-verification.json). The [published 170-second demonstration](https://drive.google.com/file/d/1G-S7X98fVB-zbEihmDhxyEEypMlNVUyt/view) is publicly viewable and was checked in a signed-out Incognito window. A separate final fresh four-PDF run passed 18 independent checks, including all 17 exact quotations, reviewer decisions, export and cloud persistence; see [the sanitized fresh-run receipt](evals/cloud-final-demo-verification.public.json). These checks concern this specific synthetic run, not general accuracy. Infrastructure scripts print plans until an operator configures and explicitly applies them.
+
+## Workspace update
+
+The updated hosted build passed its [workspace and version-history verification](evals/workspace-hosted-verification.json), plus 143 backend tests and four frontend helper tests.
+
+![Project files grouped by company, evidence type and version](docs/screenshots/workspace-files.png)
+
+Companies can participate in multiple projects, and each project can include a buyer, vendor, subprocessor, auditor or partner. Keep project details, review cycles, source files and reviewer decisions together. The file manager filters uploaded evidence by company, project, type, processing state and version.
+
+Three versioned demo policy packs cover data handling, security assurance and AI vendor review. A demo creates real synthetic PDF files; findings are generated only when analysis runs. File replacements preserve original bytes, page-aware text comparisons and prior decisions pinned to exact document hashes. Reanalysis starts with unreviewed decisions.
+
+Google Document AI OCR integration is optional and currently unconfigured on the hosted demo. It supports bounded scans/mixed PDFs when an operator supplies a regional processor and permissions; OCR provenance and verification warnings remain visible. The current workspace is private to its browser identity. Company records do not grant access or retrieve unshared files; vendor invitations, email ingestion and cross-company collaboration are future work. [Workflow and limits](docs/workspaces.md).
 
 ## Run locally
 

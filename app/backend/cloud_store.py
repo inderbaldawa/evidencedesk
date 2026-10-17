@@ -58,6 +58,7 @@ class CloudStore:
         generation = int(generation)
         revision = int(review.get('_revision', 0))
         metadata = {k: review[k] for k in ('id', 'name', 'vendor', 'service', 'environment', 'period', 'policy_version', 'status', 'created_at', 'updated_at', 'coverage')}
+        metadata.update({key:review.get(key,'') for key in ('project_id','company_id','policy_pack_id','policy_pack_version')})
         metadata.update(owner=review['_owner'], artifact=f'reviews/{review["id"]}.json', artifact_generation=generation, artifact_revision=revision)
         metadata['analysis'] = {k: v for k, v in review.get('analysis', {}).items() if k != 'reconciliation_cache'}
         findings = review.get('findings', [])
@@ -107,12 +108,15 @@ class CloudStore:
             blob = self._blob(review_id)
             try:
                 blob.reload()
-                generation = int(blob.generation)
-                return json.loads(blob.download_as_bytes(if_generation_match=generation)), generation
-            except PreconditionFailed:
-                continue
             except NotFound:
                 return None, None
+            generation = int(blob.generation)
+            try:
+                return json.loads(blob.download_as_bytes(if_generation_match=generation)), generation
+            except (PreconditionFailed, NotFound):
+                # A pinned generation can disappear after a concurrent overwrite.
+                # Only a missing latest object at reload proves the review is absent.
+                continue
         raise RuntimeError('Review changed repeatedly while reading; retry.')
 
     def get(self, review_id):
@@ -235,7 +239,8 @@ class CloudStore:
             except Exception:
                 logger.exception('Dispatch session cleanup failed for review %s run %s', review_id, run_id)
 
-    def take_limit(self, owner, maximum=5):
+    def take_limit(self, owner, maximum=5, amount=1):
+        if not isinstance(amount,int) or amount<1:raise ValueError("Limit amount must be positive")
         import hashlib
         key = hashlib.sha256(owner.encode()).hexdigest() + '-' + now()[:10]
         ref = self.db.collection('limits').document(key)
@@ -243,11 +248,48 @@ class CloudStore:
         def take(transaction):
             snap = ref.get(transaction=transaction)
             count = (snap.to_dict() or {}).get('count', 0)
-            if count >= maximum:
+            if count + amount > maximum:
                 return False
-            transaction.set(ref, {'count': count + 1, 'day': now()[:10]})
+            transaction.set(ref, {'count': count + amount, 'day': now()[:10]})
             return True
         return take(self.db.transaction())
+
+    def workspace_get(self, owner):
+        key=hashlib.sha256(owner.encode()).hexdigest()
+        snap=self.db.collection('workspaces').document(key).get()
+        data=snap.to_dict() or {'companies':[], 'projects':[]}
+        if data.get('_owner',owner)!=owner:raise PermissionError('Workspace unavailable')
+        data.pop('_owner',None)
+        return data
+
+    def workspace_update(self, owner, fn):
+        key=hashlib.sha256(owner.encode()).hexdigest()
+        ref=self.db.collection('workspaces').document(key)
+        @firestore.transactional
+        def change(transaction):
+            data=ref.get(transaction=transaction).to_dict() or {'companies':[], 'projects':[]}
+            if data.get('_owner',owner)!=owner:raise PermissionError('Workspace unavailable')
+            data.pop('_owner',None)
+            result=fn(data)
+            if len(json.dumps(data).encode('utf-8'))>800000:
+                from fastapi import HTTPException
+                raise HTTPException(400,'Workspace metadata limit reached; shorten project descriptions or company notes.')
+            transaction.set(ref,{**data,'_owner':owner})
+            return result if result is not None else data
+        return change(self.db.transaction())
+
+    def list_reviews(self, owner, limit=100):
+        from google.cloud.firestore_v1.base_query import FieldFilter
+        from concurrent.futures import ThreadPoolExecutor
+        snapshots=sorted(self.db.collection('reviews').where(filter=FieldFilter('owner','==',owner)).stream(),key=lambda snap:snap.to_dict().get('updated_at',''),reverse=True)[:limit]
+        def indexed(snap):
+            record=snap.to_dict()
+            record['_owner']=owner
+            record['documents']=[doc.to_dict() for doc in snap.reference.collection('documents').stream()]
+            record['findings']=[doc.to_dict() for doc in snap.reference.collection('findings').stream()]
+            return record
+        with ThreadPoolExecutor(max_workers=6) as pool:
+            return sorted(pool.map(indexed,snapshots),key=lambda r:r.get('updated_at',''),reverse=True)
 
     def acquire_review(self, review_id, attempt_token, run_id=None):
         def acquire(review):

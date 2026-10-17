@@ -1,6 +1,7 @@
 """Small structured-output contracts; source text is always untrusted data."""
 from typing import Literal
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+from .policy_packs import ALL_CONTROL_IDS
 
 CONTROL_NAMES = {
     "data_location": "Customer data location",
@@ -10,12 +11,21 @@ CONTROL_NAMES = {
     "incident_response": "Incident response",
     "evidence_currency": "Evidence currency",
 }
-Control = Literal["data_location", "backup_location", "deletion", "access_review", "incident_response", "evidence_currency"]
+Control = str  # Bounded registry validation below; selected-pack validation is in the pipeline.
 Status = Literal["evidence_found", "partial_evidence", "conflicting_evidence", "not_evidenced", "needs_human_review"]
 
 
 class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
+
+
+class ControlledModel(StrictModel):
+    @field_validator("control_id", check_fields=False)
+    @classmethod
+    def registered_control(cls, value):
+        if value not in ALL_CONTROL_IDS:
+            raise ValueError("Unknown control ID.")
+        return value
 
 
 class Context(StrictModel):
@@ -30,7 +40,7 @@ class Context(StrictModel):
     scope_reason: str
 
 
-class Observation(StrictModel):
+class Observation(ControlledModel):
     control_id: Control
     role: Literal["requirement", "claim", "record", "support"]
     page: int = Field(ge=1)
@@ -49,7 +59,7 @@ class ExtractionBatch(StrictModel):
     documents: list[ExtractedDocument] = Field(max_length=4)
 
 
-class Reconciliation(StrictModel):
+class Reconciliation(ControlledModel):
     control_id: Control
     status: Status
     requirement: str

@@ -1,0 +1,378 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "check": "GET /api/session HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/workspace HTTP 401",
+      "passed": true
+    },
+    {
+      "check": "GET /api/policy-packs HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Three policy packs available",
+      "passed": true
+    },
+    {
+      "check": "OCR accurately unconfigured",
+      "passed": true
+    },
+    {
+      "check": "POST /api/workspace/demo HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "data-handling real PDFs and correct pack",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "POST /api/workspace/demo HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "security-assurance real PDFs and correct pack",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "POST /api/workspace/demo HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "ai-vendor real PDFs and correct pack",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Original source hash verified",
+      "passed": true
+    },
+    {
+      "check": "GET /api/workspace HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Cloud workspace index contains all projects and files",
+      "passed": true
+    },
+    {
+      "check": "GET /api/workspace HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Stranger workspace empty",
+      "passed": true
+    },
+    {
+      "check": "GET /api/projects/{id} HTTP 404",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/history HTTP 404",
+      "passed": true
+    },
+    {
+      "check": "PATCH /api/projects/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Cloud project metadata persisted",
+      "passed": true
+    },
+    {
+      "check": "GET /api/projects/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Project parties and file view persisted",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 404",
+      "passed": true
+    },
+    {
+      "check": "PATCH /api/reviews/{id}/documents/{id} HTTP 404",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/compare HTTP 400",
+      "passed": true
+    },
+    {
+      "check": "POST /api/reviews/{id}/analyze HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Cloud worker completed",
+      "passed": true
+    },
+    {
+      "check": "AI pack grounded retention conflict",
+      "passed": true
+    },
+    {
+      "check": "POST /api/reviews/{id}/findings/finding-data_retention/decision HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "POST /api/reviews/{id}/documents/{id}/versions HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Replacement staged without displacing original",
+      "passed": true
+    },
+    {
+      "check": "POST /api/reviews/{id}/analyze HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id} HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Cloud worker completed",
+      "passed": true
+    },
+    {
+      "check": "Human decisions reset for new evidence",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/history HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Two exact-version snapshots preserved",
+      "passed": true
+    },
+    {
+      "check": "Prior reviewer request remains in history",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/compare HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Cloud version comparison ready",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/documents/{id}/file HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Historic original bytes unchanged",
+      "passed": true
+    },
+    {
+      "check": "GET /api/reviews/{id}/export HTTP 200",
+      "passed": true
+    },
+    {
+      "check": "Export includes current review",
+      "passed": true
+    }
+  ],
+  "analysis": {
+    "calls": 7,
+    "model": "gemini-3.8-flash",
+    "complete": true,
+    "policy_pack_id": "ai-vendor",
+    "policy_pack_version": "1.0"
+  },
+  "retention_status": "evidence_found",
+  "comparison_summary": {
+    "added_lines": 5,
+    "removed_lines": 4,
+    "changed_pages": 1
+  },
+  "snapshots": 2,
+  "synthetic": true,
+  "revision": "evidencedesk-web-00005-5tq",
+  "image_digest": "sha256:ea87a480632f57378e5ae97a1e49ceb254a25147d2e798294da9ca3a3b20f85c",
+  "backend_tests": 143,
+  "frontend_tests": 4,
+  "ocr_live_tested": false,
+  "read_race_fixed": true
+}

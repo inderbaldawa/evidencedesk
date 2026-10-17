@@ -413,3 +413,59 @@ def test_session_cleanup_cannot_mask_accepted_dispatch(store, monkeypatch):
     store.enqueue(rid)
     assert store.db.values[f'reviews/{rid}']['last_dispatched_operation'] == 'operations/test'
     assert len(session.calls) == 1 and session.closed
+
+
+def test_generation_disappearing_after_reload_retries_instead_of_missing_review(store, monkeypatch):
+    """An overwritten pinned generation can404 while the current object exists."""
+    rid = queued(store)
+    original_download = Blob.download_as_bytes
+    calls = []
+    replacement_generation = []
+
+    def overwrite_between_reload_and_download(blob, if_generation_match=None):
+        calls.append(if_generation_match)
+        if len(calls) == 1:
+            generation, data = blob.bucket.values[blob.key]
+            assert generation == if_generation_match == blob.generation
+            newer = json.loads(data)
+            newer.update(name='Worker committed newer progress', _revision=newer['_revision'] + 1)
+            # The old generation no longer exists, but the same object name does.
+            blob.bucket.sequence += 1
+            replacement_generation.append(blob.bucket.sequence)
+            blob.bucket.values[blob.key] = (blob.bucket.sequence, json.dumps(newer).encode())
+            raise NotFound('requested prior generation disappeared')
+        return original_download(blob, if_generation_match=if_generation_match)
+
+    monkeypatch.setattr(Blob, 'download_as_bytes', overwrite_between_reload_and_download)
+    result = store.get(rid)
+    assert result is not None
+    assert result['name'] == 'Worker committed newer progress'
+    assert len(calls) == 2 and calls[0] != calls[1]
+    assert calls[1] == replacement_generation[0]
+    assert store.db.values[f'reviews/{rid}']['artifact_generation'] == replacement_generation[0]
+
+
+def test_truly_missing_reload_returns_none_without_attempting_download(store, monkeypatch):
+    reload_calls = []
+    original_reload = Blob.reload
+    def counted_reload(blob):
+        reload_calls.append(blob.key)
+        return original_reload(blob)
+    def forbidden_download(*args, **kwargs):
+        raise AssertionError('A missing object must not be downloaded')
+    monkeypatch.setattr(Blob, 'reload', counted_reload)
+    monkeypatch.setattr(Blob, 'download_as_bytes', forbidden_download)
+    assert store.get('genuinely-missing-review') is None
+    assert reload_calls == ['reviews/genuinely-missing-review.json']
+
+
+def test_repeated_disappearing_generations_fail_bounded_without_false_404(store, monkeypatch):
+    rid = queued(store)
+    calls = []
+    def vanished_generation(blob, if_generation_match=None):
+        calls.append(if_generation_match)
+        raise NotFound('generation disappeared after successful reload')
+    monkeypatch.setattr(Blob, 'download_as_bytes', vanished_generation)
+    with pytest.raises(RuntimeError, match='changed repeatedly'):
+        store.get(rid)
+    assert len(calls) == 6
