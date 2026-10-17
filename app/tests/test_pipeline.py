@@ -138,6 +138,48 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue(all("not proof" in f["explanation"] for f in result["findings"]))
 
     @patch("app.backend.pipeline.AIClient", FakeAI)
+    def test_missing_currency_observation_is_not_missing_source_evidence(self):
+        policy = cached_document("policy", "policy", "requirement")
+        record = cached_document("record", "inventory", "record",
+                                 quote="Verified 12 October 2026. Production inventory for Example Vendor, Service A.")
+        # Reproduce the live extraction shape: context is current/applicable,
+        # but the dated record was extracted only for the other five controls.
+        record["extraction"]["data"]["observations"] = [
+            item for item in record["extraction"]["data"]["observations"]
+            if item["control_id"] != "evidence_currency"
+        ]
+        result = analyze_review(REVIEW, [policy, record])
+        currency = next(f for f in result["findings"] if f["control_id"] == "evidence_currency")
+        self.assertEqual(currency["status"], "needs_human_review")
+        self.assertIn("missing extracted assessment", currency["explanation"])
+        self.assertNotIn("No applicable supporting evidence", currency["explanation"])
+        self.assertTrue(all(c["document_id"] == "policy" for c in currency["citations"]))
+        self.assertEqual(result["analysis"]["calls"], 5)
+        self.assertNotIn("evidence_currency", result["analysis"]["reconciliation_cache"])
+        # Prior deterministic fallbacks are recalculated; valid model results
+        # are reused without a forced re-extraction or five new model calls.
+        repeated = analyze_review({**REVIEW, "analysis": result["analysis"]}, result["documents"])
+        self.assertEqual(repeated["analysis"]["calls"], 0)
+        self.assertEqual(repeated["analysis"]["cache_hits"], 2)
+        self.assertEqual(repeated["analysis"]["reconciliation_cache_hits"], 5)
+        self.assertEqual(repeated["findings"], result["findings"])
+
+    @patch("app.backend.pipeline.AIClient", FakeAI)
+    def test_excluded_or_failed_sources_do_not_count_as_applicable_currency_sources(self):
+        policy = cached_document("policy", "policy", "requirement")
+        old = cached_document("old", "inventory", "record")
+        old["extraction"]["data"]["context"]["currency"] = "superseded"
+        result = analyze_review(REVIEW, [policy, old])
+        currency = next(f for f in result["findings"] if f["control_id"] == "evidence_currency")
+        self.assertEqual(currency["status"], "not_evidenced")
+        self.assertIn("1 were outside scope", currency["explanation"])
+        broken = {"id": "broken", "name": "broken.pdf", "pages": [], "status": "failed", "error": "Unreadable PDF"}
+        failed = analyze_review(REVIEW, [policy, broken])
+        currency = next(f for f in failed["findings"] if f["control_id"] == "evidence_currency")
+        self.assertEqual(currency["status"], "needs_human_review")
+        self.assertIn("1 failed", currency["explanation"])
+
+    @patch("app.backend.pipeline.AIClient", FakeAI)
     def test_unchanged_review_reuses_reconciliation_but_revalidates_citations(self):
         result = analyze_review(REVIEW, [cached_document("policy", "policy", "requirement"), cached_document("record", "operational_record", "record")])
         self.assertEqual(result["analysis"]["calls"], 6)

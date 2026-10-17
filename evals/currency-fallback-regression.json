@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-17T07:06:34.054202+00:00",
+  "mode": "offline replay of read-only cloud extraction/reconciliation caches; AI client replaced with fail-if-called double",
+  "original_browser_export_sha256": "e04cff9c01251e76a5e2394ea066bedf79a2e64b7068317716c6d8e66b6a871e",
+  "model_calls": 0,
+  "extraction_cache_hits": 4,
+  "reconciliation_cache_hits": 5,
+  "unchanged_other_five_finding_content": true,
+  "currency_before": "not_evidenced",
+  "currency_after": "needs_human_review",
+  "currency_fallback_version": "evidencedesk-currency-fallback-1.1",
+  "currency_explanation": "The processed sources include 3 applicable non-policy document(s), but extraction did not establish a citation-backed assessment of their dates, effective terms and superseded versions. Review the original sources against the policy's currency requirement. A missing extracted assessment does not establish that current evidence is absent. Coverage: 0 failed document(s); 0 outside scope or unclear.",
+  "existing_decision_behavior": "Worker archives previous findings with reviewer decision; refreshed current findings are unreviewed and require explicit reviewer re-save.",
+  "cloud_mutations": 0,
+  "live_corrected_reanalysis_verified": false
+}

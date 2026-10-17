@@ -13,7 +13,7 @@ if [[ "$APPLY" == 1 ]]; then
   # Save the entire previous definition for operator-selected rollback; no guessed revision.
   if gcloud run services describe "$WEB_SERVICE" --region="$REGION" --project="$PROJECT" --format=json > "$INFRA_DIR/.local/pre-deploy-service.json" 2> "$INFRA_DIR/.local/pre-deploy-service-error.txt"; then
     printf 'Previous service snapshot saved in infra/.local/pre-deploy-service.json.\n'
-  elif ! grep -Eqi 'not found|NOT_FOUND|does not exist' "$INFRA_DIR/.local/pre-deploy-service-error.txt"; then
+  elif ! grep -Eqi 'not found|NOT_FOUND|does not exist|Cannot find service' "$INFRA_DIR/.local/pre-deploy-service-error.txt"; then
     cat "$INFRA_DIR/.local/pre-deploy-service-error.txt" >&2; exit 1
   fi
 fi

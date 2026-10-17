@@ -1,0 +1,211 @@
+{
+  "checked_at": "2026-10-17T07:02:15.913504+00:00",
+  "purpose": "Independent verification of the first deployed four-document browser workflow; read-only cloud checks, no model calls.",
+  "overall": "workflow_and_persistence_verified_with_currency_semantic_defect",
+  "source_artifact_sha256": "e04cff9c01251e76a5e2394ea066bedf79a2e64b7068317716c6d8e66b6a871e",
+  "pdf_export_sha256": "8182fe72e4cad43471308a45e2c1c321453462c23158633be7e1608a3ee26a1a",
+  "coverage": {
+    "submitted": 4,
+    "processed": 4,
+    "failed": 0,
+    "duplicates": 0,
+    "pages": 8
+  },
+  "pdf_export_pages": 5,
+  "control_statuses": {
+    "data_location": "partial_evidence",
+    "backup_location": "conflicting_evidence",
+    "deletion": "not_evidenced",
+    "access_review": "partial_evidence",
+    "incident_response": "partial_evidence",
+    "evidence_currency": "not_evidenced"
+  },
+  "five_scope_appropriate_outcomes": true,
+  "currency_semantic_defect": "not_evidenced explanation wrongly says no applicable supporting evidence; uploaded inventory and register contain current October dates and matching production scope. Do not claim 6/6 semantic accuracy.",
+  "source_checks": [
+    {
+      "document": "policy-v3.pdf",
+      "sha256": "d6679f631290b6c259ad3ef350b6b26f7a067a9bfc412339fca735daed7f8556",
+      "local_and_cloud_bytes_match": true,
+      "pages_match": true
+    },
+    {
+      "document": "questionnaire-202610.pdf",
+      "sha256": "049514b758db709dd4c797ea6d91d022265f6efb3f01d8395355e10ec5643d19",
+      "local_and_cloud_bytes_match": true,
+      "pages_match": true
+    },
+    {
+      "document": "backup-inventory-202610.pdf",
+      "sha256": "027ced4de34dd41c402ff7f440cdf1c08245c5034926bb739e9d221a7bf40798",
+      "local_and_cloud_bytes_match": true,
+      "pages_match": true
+    },
+    {
+      "document": "evidence-register-202610.pdf",
+      "sha256": "30f617aa5e29917f85b81e1c0fa6e5ead4225e304fd8f1b3a689ecbbafee299e",
+      "local_and_cloud_bytes_match": true,
+      "pages_match": true
+    }
+  ],
+  "citation_checks": [
+    {
+      "control": "data_location",
+      "document": "policy-v3.pdf",
+      "page": 1,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "data_location",
+      "document": "questionnaire-202610.pdf",
+      "page": 1,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "backup_location",
+      "document": "policy-v3.pdf",
+      "page": 1,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "backup_location",
+      "document": "questionnaire-202610.pdf",
+      "page": 1,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "backup_location",
+      "document": "backup-inventory-202610.pdf",
+      "page": 1,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "backup_location",
+      "document": "backup-inventory-202610.pdf",
+      "page": 2,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "deletion",
+      "document": "policy-v3.pdf",
+      "page": 2,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "deletion",
+      "document": "questionnaire-202610.pdf",
+      "page": 2,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "deletion",
+      "document": "evidence-register-202610.pdf",
+      "page": 1,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "access_review",
+      "document": "policy-v3.pdf",
+      "page": 2,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "access_review",
+      "document": "questionnaire-202610.pdf",
+      "page": 2,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "incident_response",
+      "document": "policy-v3.pdf",
+      "page": 3,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "incident_response",
+      "document": "questionnaire-202610.pdf",
+      "page": 2,
+      "literal_whitespace_normalized": true
+    },
+    {
+      "control": "evidence_currency",
+      "document": "policy-v3.pdf",
+      "page": 3,
+      "literal_whitespace_normalized": true
+    }
+  ],
+  "decision": {
+    "backup_clarification_requested": true,
+    "single_history_entry_matches_current": true,
+    "other_five_unreviewed": true,
+    "note_and_followup_preserved_in_pdf": true,
+    "decision_timestamp_preserved_in_pdf": true
+  },
+  "pdf_finding_checks": [
+    {
+      "control": "data_location",
+      "explanation_preserved": true,
+      "status_preserved": true
+    },
+    {
+      "control": "backup_location",
+      "explanation_preserved": true,
+      "status_preserved": true
+    },
+    {
+      "control": "deletion",
+      "explanation_preserved": true,
+      "status_preserved": true
+    },
+    {
+      "control": "access_review",
+      "explanation_preserved": true,
+      "status_preserved": true
+    },
+    {
+      "control": "incident_response",
+      "explanation_preserved": true,
+      "status_preserved": true
+    },
+    {
+      "control": "evidence_currency",
+      "explanation_preserved": true,
+      "status_preserved": true
+    }
+  ],
+  "cloud_persistence": {
+    "gcs_findings_equal_export": true,
+    "gcs_coverage_equal_export": true,
+    "gcs_status_complete": true,
+    "gcs_decision_event_equal_export": true,
+    "firestore_status_complete": true,
+    "firestore_revision_matches_gcs": true,
+    "completed_dispatch_matches_run": true,
+    "worker_execution_succeeded": true,
+    "worker_completion_recorded": true
+  },
+  "cloud_ledger": {
+    "baseline": "approved local-to-cloud carried-forward counters",
+    "current_usage": {
+      "calls": 70.0,
+      "input_tokens": 194691.0,
+      "output_tokens": 76415.0,
+      "cost_usd": 0.8651489999999997
+    },
+    "growth_since_initialization": {
+      "calls": 6.0,
+      "input_tokens": 10991.0,
+      "output_tokens": 3903.0,
+      "cost_usd": 0.04575899999999988
+    },
+    "growth_matches_this_review_analysis": true,
+    "remaining_reservations": 0
+  },
+  "limits": [
+    "This checks persisted state and completed execution, not forced restart/crash recovery.",
+    "The run used only four documents; missing primary/access/incident artifacts appropriately prevent evidence_found.",
+    "Currency status is a confirmed semantic limitation of this saved run; later corrections must retain this original artifact.",
+    "PDF checks here verify text/content, not fresh visual QA of all pages.",
+    "Reports omit identity UID, project/bucket names, review IDs, execution IDs and credentials."
+  ]
+}

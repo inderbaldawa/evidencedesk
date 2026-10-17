@@ -1,0 +1,86 @@
+{
+  "checked_at": "2026-10-17T07:12:26.738514+00:00",
+  "mode": "read-only operator ADC verification; no model calls or mutations by audit",
+  "original_export_sha256": "e04cff9c01251e76a5e2394ea066bedf79a2e64b7068317716c6d8e66b6a871e",
+  "corrected_authoritative_artifact_sha256": "6fb7f921054b16e49c9463dd567ff7863e417c68dea3c205fd466e193d420ade",
+  "checks": {
+    "completed": true,
+    "currency_needs_human_review": true,
+    "currency_version_recorded": true,
+    "no_provider_calls": true,
+    "no_provider_tokens_or_estimated_cost": true,
+    "four_extraction_cache_hits": true,
+    "five_reconciliation_cache_hits": true,
+    "other_five_findings_equivalent": true,
+    "original_clarification_and_wrong_currency_archived": true,
+    "clarification_explicitly_resaved": true,
+    "resaved_decision_history_matches": true,
+    "resaved_note_and_followup_present": true,
+    "other_five_current_decisions_unreviewed": true,
+    "completed_dispatch_matches_run": true,
+    "new_execution_not_original": true,
+    "execution_succeeded": true,
+    "execution_uses_corrected_image_digest": true,
+    "firestore_status_and_revision_match": true,
+    "aggregate_ledger_unchanged_since_original_audit": true
+  },
+  "other_five_finding_equivalence": {
+    "data_location": true,
+    "backup_location": true,
+    "deletion": true,
+    "access_review": true,
+    "incident_response": true
+  },
+  "analysis": {
+    "generated_at": "2026-10-17T07:11:11.345379+00:00",
+    "version": "evidencedesk-1.1",
+    "currency_fallback_version": "evidencedesk-currency-fallback-1.1",
+    "calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "estimated_cost_usd": 0,
+    "cache_hits": 4,
+    "reconciliation_cache_hits": 5,
+    "complete": true,
+    "stale": false
+  },
+  "coverage": {
+    "submitted": 4,
+    "processed": 4,
+    "failed": 0,
+    "duplicates": 0,
+    "pages": 8
+  },
+  "currency_before": "not_evidenced",
+  "currency_after": "needs_human_review",
+  "currency_explanation_after": "The processed sources include 3 applicable non-policy document(s), but extraction did not establish a citation-backed assessment of their dates, effective terms and superseded versions. Review the original sources against the policy's currency requirement. A missing extracted assessment does not establish that current evidence is absent. Coverage: 0 failed document(s); 0 outside scope or unclear.",
+  "decision": {
+    "prior_at": "2026-10-17T06:59:33.960748+00:00",
+    "resaved_at": "2026-10-17T07:11:36.821986+00:00",
+    "old_decision_archived": true,
+    "current": "clarification_requested"
+  },
+  "execution": {
+    "corrected_image_digest": "sha256:702408291bfbd1546a5a8b7f859c32363f91d1a023477a2651d9fa8f90b960c1",
+    "completed": true,
+    "succeeded_tasks": 1,
+    "failed_tasks": 0
+  },
+  "ledger": {
+    "delta_since_original_audit": {
+      "calls": 0.0,
+      "input_tokens": 0.0,
+      "output_tokens": 0.0,
+      "cost_usd": 0.0
+    },
+    "outstanding_reservations": 0
+  },
+  "limitations": [
+    "This is a cached corrective rerun of the original four-document review, not a fresh extraction/model accuracy result.",
+    "Currency is explicitly unresolved for human date/version assessment; this is not a positive currency clearance.",
+    "Aggregate ledger comparison is time-specific; concurrent authorized work can change later totals.",
+    "No forced process crash/restart test was performed.",
+    "Original export and verification receipts remain unchanged."
+  ],
+  "passed": true
+}

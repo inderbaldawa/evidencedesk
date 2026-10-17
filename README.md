@@ -6,9 +6,11 @@ EvidenceDesk is a focused vendor-evidence review prototype for financial-service
 
 The demonstration is entirely synthetic. Aster Finance requires its customer-data backups to remain in India. Nimbus Support's questionnaire claims they do. Its current production inventory records a backup replica in Singapore. The discrepancy involves the same vendor, service, environment and period. India-only storage is this fictional buyer's internal requirement, not a universal legal requirement.
 
-![Synthetic backup review: buyer requirement, vendor claim and operational record side by side](docs/screenshots/local-three-source-comparison.png)
+[Open the live prototype](https://evidencedesk-web-hrndvaqjba-el.a.run.app) · Synthetic evidence only
 
-*Actual local application showing the synthetic evidence comparison.*
+![Synthetic backup review: buyer requirement, vendor claim and operational record side by side](docs/screenshots/deployed-three-source.png)
+
+*Actual deployed application showing the synthetic evidence comparison.*
 
 ## What the workflow covers
 
@@ -24,7 +26,7 @@ The controls cover primary data location, backup location, completed deletion ev
 
 This repository contains implementation source, offline tests, a deterministic synthetic corpus, reviewed real model results and deployment scripts. The compact run matched all six expected outcomes; the 106-document run matched all six after a disclosed two-control retry. A fresh local HTTP test verified failure handling, session isolation and exports. See [evaluation status](evals/README.md) for measured usage, source-level checks and limitations.
 
-Public deployment, public video and final competition artifacts are separate release steps. No live URL is represented by a placeholder in this source snapshot. Infrastructure scripts are plans until an operator configures and explicitly applies them.
+The Cloud Run prototype is deployed. Its public sample and source PDFs are available. A deployed verification passed 115 resource, authentication, isolation, persistence and export checks. A separate four-PDF browser run executed the real cloud worker; its currency fallback was subsequently corrected to request human review when extraction omitted a date/version assessment. See [cloud authentication checks](evals/cloud-auth-verification.public.json), [the initial browser-run audit](evals/cloud-browser-verification.md) and [the verified correction](evals/cloud-currency-corrected-verification.json). Public video and final competition artifacts remain separate release steps. Infrastructure scripts print plans until an operator configures and explicitly applies them.
 
 ## Run locally
 
@@ -81,7 +83,7 @@ The model and prices reflect this prototype's validated configuration, not a pro
 
 ## Tests and corpus
 
-Offline tests use synthetic inputs and mocked model responses. They do not require Google credentials or make model calls:
+The current offline suite has 79 passing tests. Offline tests use synthetic inputs and mocked model responses. They do not require Google credentials or make model calls:
 
 ```sh
 python -m pytest app/tests -q
@@ -101,7 +103,7 @@ The documents are deliberately short synthetic records. Their results cannot est
 
 ## Architecture and deployment
 
-The target architecture uses a Cloud Run web/API service and a private Cloud Run Job for durable analysis. Cloud Storage stores source PDFs and artifacts. A named Firestore database stores review state and decisions. Firebase Authentication identifies writable sessions; the backend enforces workspace authorization. Gemini performs structured evidence extraction and per-control reconciliation.
+The deployed architecture uses a Cloud Run web/API service and a private Cloud Run Job for durable analysis. Cloud Storage stores source PDFs and authoritative review artifacts, including decisions. A named Firestore database stores the review index, quotas and aggregate AI budget ledger. Firebase Authentication identifies writable sessions; the backend enforces workspace authorization. Gemini performs structured evidence extraction and per-control reconciliation.
 
 Application storage and compute are configured for Mumbai (`asia-south1`), while Gemini uses `global`. This is not an India-only processing claim. See [architecture](docs/architecture.md) and the [deployment guide](infra/README.md).
 

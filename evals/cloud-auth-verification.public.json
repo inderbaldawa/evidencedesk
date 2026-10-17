@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-17T07:02:59.042291+00:00",
+  "url": "https://evidencedesk-web-hrndvaqjba-el.a.run.app",
+  "passed": true,
+  "checks_passed": 115,
+  "checks_total": 115,
+  "scope": [
+    "Cloud Run resource limits, immutable image, dedicated identities and least-privilege resource IAM",
+    "Public synthetic sample and all ten source PDF hashes",
+    "Two anonymous Firebase identities and independent editable sample copies",
+    "Cross-user review, source PDF, PDF/JSON export and decision-write denials",
+    "Anonymous private review/source denials and immutable public sample",
+    "Saved reviewer decision persists through fresh HTTP request; other clone unchanged",
+    "Direct client Firestore reads and writes denied",
+    "Fresh ten-document upload persists and remains inaccessible to other user"
+  ],
+  "model_dispatch_in_this_check": false,
+  "limits": [
+    "Fresh connections demonstrate persisted state, not a forced container restart.",
+    "Fresh model execution separately verified; see cloud-browser-verification.",
+    "This is a prototype verification, not a security audit or production certification."
+  ]
+}

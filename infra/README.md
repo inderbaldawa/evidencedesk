@@ -56,3 +56,9 @@ Job parallelism is per execution. Concurrent execution limits need application c
 `teardown.sh` is destructive and is not part of routine deployment. It requires `--apply --delete-evidencedesk-data`. Preserve artifacts you need first, and retain the judging deployment for the required period. Do not delete unrelated Firebase apps, users, the default database or the project. Soft-deleted objects and retained logs may remain billable.
 
 Cloud readiness is determined by actual deployment checks, not the presence of these scripts. See `evals/README.md` for the current verification boundary.
+
+## Deployment verification helpers
+
+`seed_sample.py` validates a completed synthetic compact analysis and its exact source hashes, then creates the read-only cloud sample and private source objects only with `--apply --source-sha256 HASH`. Set `GOOGLE_CLOUD_PROJECT`; the default plan performs no cloud calls. Its default source is the raw local output from `evals/run_compact.py`, not an expected fixture.
+
+`verify_deployment.py` defaults to a no-network plan. Use `--url HTTPS_RUN_APP_ORIGIN --read-only --resources` for public/resource checks. `--exercise` creates two anonymous accounts and private synthetic review artifacts; `--allow-ai --resources --exercise` additionally dispatches one real billable analysis through the configured shared cloud budget. Read its help and review limits before running. No tokens are printed or saved; created test reviews are not automatically deleted.

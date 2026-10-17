@@ -20,8 +20,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8941,
-      "sha256": "126037b65127b69b1efd6739362dc739922370e2ca0528c08bf280a3fbe4c48b"
+      "bytes": 9683,
+      "sha256": "a2ae240c0d54115a17aa5ce45704b2525e0816917fbe51877cf7062e638b2e8e"
     },
     {
       "path": "app/backend/__init__.py",
@@ -50,8 +50,8 @@
     },
     {
       "path": "app/backend/main.py",
-      "bytes": 10175,
-      "sha256": "2cad21943bb179561f9dc8c74b0b2b4afea3efe433ce3a7b91ae7310aa78ebd7"
+      "bytes": 12582,
+      "sha256": "428028d1ea20eb3cfff6999e4fbde44c6b3bed698044dc69310c4227839b197c"
     },
     {
       "path": "app/backend/pdf_parser.py",
@@ -60,8 +60,8 @@
     },
     {
       "path": "app/backend/pipeline.py",
-      "bytes": 23445,
-      "sha256": "254f7bdeaadeea56a1fdbc3d325fc41ba135da165bc017d43b95ed47d58b57a8"
+      "bytes": 25376,
+      "sha256": "77c55d397920d56d57cf698665cb42c24bec9a5be7d80a6cf31ada555dc280a3"
     },
     {
       "path": "app/backend/report.py",
@@ -159,6 +159,11 @@
       "sha256": "cc3304780c056e04b1c4e0eefafcb6f19538a480dcc7c310e9bd7b62e22eadb7"
     },
     {
+      "path": "app/tests/test_auth.py",
+      "bytes": 6851,
+      "sha256": "900bdd0c24d22e906bda6221ac1f4152965d17e108ef86565841463ad21ea4b7"
+    },
+    {
       "path": "app/tests/test_cloud_budget.py",
       "bytes": 6502,
       "sha256": "daf04c9aa9e948d617438a7e30ea4746141d478138d9eda5a39b154dbfb3f05a"
@@ -170,8 +175,8 @@
     },
     {
       "path": "app/tests/test_pipeline.py",
-      "bytes": 11066,
-      "sha256": "bb000adbcfdadd5088d11131167378443d1d4ca532d9fe57d8c2537c978d291c"
+      "bytes": 13982,
+      "sha256": "e6c80d01da76dab08be94a7674411b398eb5df27b24dcdaac8d5bd4404cdb223"
     },
     {
       "path": "data/README.md",
@@ -1349,6 +1354,11 @@
       "sha256": "b98d20c7e5bbbe9909908c58adebc924c166cc6ba70ccfd1cb3e9f18f21c25d9"
     },
     {
+      "path": "docs/screenshots/deployed-three-source.png",
+      "bytes": 90461,
+      "sha256": "1e3c3e55c1485594e89e9a42775acccc5a9de4620ee8ac4678a95293fad9fab8"
+    },
+    {
       "path": "docs/screenshots/local-three-source-comparison.png",
       "bytes": 92677,
       "sha256": "f4d1499f73fae0ff31e7e3879c2a224a8174d43ffe12f6a5cd6da95ebe8872b2"
@@ -1359,6 +1369,31 @@
       "sha256": "d120e5413a646329c740359579dd7e15f82b3e6faa3b7c4c21871d40a5d5154e"
     },
     {
+      "path": "evals/cloud-auth-verification.public.json",
+      "bytes": 1144,
+      "sha256": "9caf03f692f1594ad601142b8e3479ddaa310536a1540110f1c66870d0cee100"
+    },
+    {
+      "path": "evals/cloud-browser-verification.json",
+      "bytes": 6548,
+      "sha256": "398762751ff09eba18aad4af63df38e891370646fa03162432f088839081abaf"
+    },
+    {
+      "path": "evals/cloud-browser-verification.md",
+      "bytes": 4823,
+      "sha256": "666b73c0ccc979d728effd641c6ca014500241b53d61f50bc92d1026e9fadc4f"
+    },
+    {
+      "path": "evals/cloud-currency-corrected-verification.json",
+      "bytes": 3505,
+      "sha256": "e86db302235fe296847754a3d44b9c00eff76f0c5444c10973000b77f2f77bec"
+    },
+    {
+      "path": "evals/cloud-currency-corrected-verification.md",
+      "bytes": 2471,
+      "sha256": "a1cede517538e6519f108294138c44254a4006d11772f0ba02410d653510c581"
+    },
+    {
       "path": "evals/compact-actual.public.json",
       "bytes": 23825,
       "sha256": "9c623b2e7f5c6d72b8b49f18afc937555c14594cecd4e80fa6ebe03de1c698d1"
@@ -1367,6 +1402,11 @@
       "path": "evals/compact-semantic-review.md",
       "bytes": 7490,
       "sha256": "089c4d45fcaf02a4f1617bbb119a8644a2910e83140b45e1e5b1a4198afa90b1"
+    },
+    {
+      "path": "evals/currency-fallback-regression.json",
+      "bytes": 1241,
+      "sha256": "f08c3be210e501b1574561eb1103a296b20b236ee6716fe09e21487f4e709f96"
     },
     {
       "path": "evals/fixtures.expected.json",
@@ -1435,8 +1475,8 @@
     },
     {
       "path": "infra/README.md",
-      "bytes": 5912,
-      "sha256": "f4472423d7a9fbee71f4ba68dfdc3d91b5e68de6adda6582758469dedd59b448"
+      "bytes": 6807,
+      "sha256": "c5ac4acae89d763d8f433956ddcd3191ef0cdc76bd5705b7818437f4a19351f8"
     },
     {
       "path": "infra/build.sh",
@@ -1455,8 +1495,8 @@
     },
     {
       "path": "infra/deploy.sh",
-      "bytes": 2260,
-      "sha256": "bfbd9cbda1c22d70261433570486160a6383e0d95f024387d2906c6aa3fc2e73"
+      "bytes": 2280,
+      "sha256": "7543ac4b79cd61d19191667f6541d10f325b352306343614863eae95617bb4d6"
     },
     {
       "path": "infra/environment.example",
@@ -1499,6 +1539,11 @@
       "sha256": "5567d833b05223f5541e45a39a9ffb6e3835ad2c6fd76fbd2337009d3f803d53"
     },
     {
+      "path": "infra/seed_sample.py",
+      "bytes": 6528,
+      "sha256": "d0841badedd82e35b51bdd2729ade50f82703dc9ab63ec665605b95d974250c1"
+    },
+    {
       "path": "infra/stage-build.py",
       "bytes": 1592,
       "sha256": "f813038e6a64081a0a8417c03d1ec7fae758592f09526d00edb0d1c6644241dc"
@@ -1507,7 +1552,13 @@
       "path": "infra/teardown.sh",
       "bytes": 2479,
       "sha256": "70dd470ab05293e3510359e7ccea7031c94d8df320f3fd7b6177d3a2849258ea"
+    },
+    {
+      "path": "infra/verify_deployment.py",
+      "bytes": 22753,
+      "sha256": "3b1e20badd32ef8bb22c35e199df4d6ca0c846c347e1f99957288a23065972bc"
     }
   ],
-  "credential_scan_findings": 0
+  "credential_scan_findings": 0,
+  "release_note": "Deployed source, authentication hardening and conservative currency fallback; existing sanitized Git history retained."
 }

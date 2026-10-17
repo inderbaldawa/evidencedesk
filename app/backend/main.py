@@ -1,7 +1,9 @@
 import copy
 import json
+import logging
 import os
 import secrets
+import threading
 import uuid
 from pathlib import Path
 from fastapi import FastAPI, Request, Response, HTTPException, UploadFile, File
@@ -17,6 +19,60 @@ app=FastAPI(title='EvidenceDesk',docs_url=None,redoc_url=None)
 store=get_store()
 CLOUD=os.environ.get('EVIDENCEDESK_AUTH','cookie')=='firebase'
 COOKIE='evidencedesk_session'
+logger = logging.getLogger(__name__)
+_firebase_init_lock = threading.Lock()
+_AUTH_ERROR_CODES = frozenset({
+    'INVALID_ARGUMENT', 'NOT_FOUND', 'UNAVAILABLE', 'PERMISSION_DENIED',
+    'INTERNAL', 'UNKNOWN', 'DEADLINE_EXCEEDED', 'UNAUTHENTICATED',
+    'RESOURCE_EXHAUSTED', 'FAILED_PRECONDITION', 'ABORTED', 'CANCELLED',
+    'ALREADY_EXISTS', 'OUT_OF_RANGE', 'DATA_LOSS',
+})
+
+
+def _firebase_app():
+    """Initialize once per process; concurrent first requests must share the app."""
+    import firebase_admin
+    with _firebase_init_lock:
+        try:
+            application = firebase_admin.get_app()
+        except ValueError:
+            application = firebase_admin.initialize_app(options={'projectId': os.environ['GOOGLE_CLOUD_PROJECT']})
+        if application.project_id != os.environ['GOOGLE_CLOUD_PROJECT']:
+            raise RuntimeError('Firebase app project does not match deployment')
+        return application
+
+
+def _log_auth_failure(exc, outcome):
+    # SDK messages/causes can contain tokens, user IDs or credential-bearing URLs.
+    # Only a type name and a closed set of SDK codes may reach operational logs.
+    code = getattr(exc, 'code', None)
+    safe_code = code if isinstance(code, str) and code in _AUTH_ERROR_CODES else 'UNCLASSIFIED'
+    logger.warning('Firebase verification outcome=%s exception_type=%s code=%s', outcome, type(exc).__name__, safe_code)
+
+
+def _firebase_owner(token):
+    from firebase_admin import auth
+    try:
+        application = _firebase_app()
+    except Exception as exc:
+        _log_auth_failure(exc, 'unavailable')
+        raise HTTPException(503, 'Sign-in verification is temporarily unavailable. Please retry.', headers={'Retry-After': '5'}) from None
+    try:
+        claims = auth.verify_id_token(token, app=application, check_revoked=True)
+        uid = claims.get('uid')
+        if not isinstance(uid, str) or not uid:
+            raise RuntimeError('Verified identity has no user ID')
+        return uid
+    except (auth.InvalidIdTokenError, auth.UserDisabledError, auth.UserNotFoundError) as exc:
+        # InvalidIdTokenError includes expired and revoked tokens. Never retry
+        # verification with weaker flags or reuse an earlier successful result.
+        _log_auth_failure(exc, 'rejected')
+        raise HTTPException(401, 'Session expired. Please sign in again.') from None
+    except Exception as exc:
+        # Certificate fetch, network, quota, IAM and configuration failures do
+        # not establish that this user's token is invalid. Fail closed as 503.
+        _log_auth_failure(exc, 'unavailable')
+        raise HTTPException(503, 'Sign-in verification is temporarily unavailable. Please retry.', headers={'Retry-After': '5'}) from None
 
 @app.exception_handler(ReviewLeaseLost)
 async def processing_conflict(request,exc):
@@ -41,14 +97,8 @@ async def security_headers(request,call_next):
 def owner(request):
     if CLOUD:
         token=request.headers.get('authorization','')
-        if not token.startswith('Bearer '):raise HTTPException(401,'Sign in to your isolated review session.')
-        try:
-            import firebase_admin
-            from firebase_admin import auth
-            if not firebase_admin._apps:firebase_admin.initialize_app(options={'projectId':os.environ['GOOGLE_CLOUD_PROJECT']})
-            claims=auth.verify_id_token(token[7:],check_revoked=True)
-            return claims['uid']
-        except Exception:raise HTTPException(401,'Session expired. Please sign in again.')
+        if not token.startswith('Bearer ') or not token[7:].strip():raise HTTPException(401,'Sign in to your isolated review session.')
+        return _firebase_owner(token[7:])
     value=request.cookies.get(COOKIE,'')
     if len(value)!=64 or not all(c in '0123456789abcdef' for c in value):raise HTTPException(401,'Initialize your review session first.')
     return value
