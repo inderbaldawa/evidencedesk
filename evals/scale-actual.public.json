@@ -1,0 +1,2538 @@
+{
+  "synthetic": true,
+  "source_artifact_sha256": "df5548a467da05d85a2e98f26ca6256907432427f5bcd7b805d3fb4af4850d7f",
+  "scope": {
+    "vendor": "Nimbus Support",
+    "service": "Customer Support Platform",
+    "environment": "production",
+    "period": "2026-10",
+    "policy_version": "3.0"
+  },
+  "status": "complete",
+  "coverage": {
+    "submitted": 106,
+    "processed": 106,
+    "failed": 0,
+    "duplicates": 0,
+    "pages": 110
+  },
+  "analysis": {
+    "model": "gemini-3.8-flash",
+    "version": "evidencedesk-1.1",
+    "generated_at": "2026-10-17T06:35:32.785399+00:00",
+    "duration_seconds": 10.724,
+    "calls": 2,
+    "input_tokens": 13102,
+    "output_tokens": 887,
+    "estimated_cost_usd": 0.026305,
+    "label": "AI-assisted evidence review; human decision required",
+    "cache_hits": 106,
+    "reconciliation_cache_hits": 4,
+    "reconciliation_versions": {
+      "data_location": "evidencedesk-reconcile-1.2",
+      "backup_location": "evidencedesk-reconcile-1.1",
+      "deletion": "evidencedesk-reconcile-1.2",
+      "access_review": "evidencedesk-reconcile-1.1",
+      "incident_response": "evidencedesk-reconcile-1.1",
+      "evidence_currency": "evidencedesk-reconcile-1.1"
+    },
+    "complete": true,
+    "citation_validation_failures": []
+  },
+  "findings": [
+    {
+      "control_id": "data_location",
+      "status": "evidence_found",
+      "requirement": "Primary customer-data stores for the reviewed production service must be located in India.",
+      "explanation": "Buyer policy requires primary customer-data stores for the reviewed production service to be located in India. The vendor claims that all production customer data and backups for the platform are stored exclusively in India. Operational asset inventories and inspection records confirm that the active primary customer database and component data stores (including ticket databases, contact indexes, search indexes, metadata stores, and archives) are physically located in Mumbai (asia-south1) and Delhi (asia-south2), India.",
+      "next_action": "Record the control as satisfied for the current review period and maintain periodic checks on asset inventory locations.",
+      "follow_up_question": "Please confirm that any newly provisioned primary customer-data stores or components for the platform will remain strictly within Indian regions.",
+      "id": "finding-data_location",
+      "control_name": "Customer data location",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "4e74a236ff7840c18e0c7b2804652002",
+          "document_name": "policy-v3.pdf",
+          "page": 1,
+          "quote": "Primary customer-data stores for the reviewed production service must be located in India.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "7ac1bcc873da45648a45d00ea5097f9e",
+          "document_name": "questionnaire-202610.pdf",
+          "page": 1,
+          "quote": "For October 2026, all production customer data and all production customer-data backups for Aster\nFinance's Customer Support Platform are stored only in India.",
+          "role": "claim",
+          "valid": true
+        },
+        {
+          "document_id": "245a112da84645439e9a127646d4b7dd",
+          "document_name": "primary-assets-202610.pdf",
+          "page": 1,
+          "quote": "The active primary customer database CST-PROD-01 is physically stored in Mumbai, India (asia-south1),\nand its active read replica CST-PROD-02 is in Delhi, India (asia-south2).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "3679339899c349a09bc7eb0598d70611",
+          "document_name": "scale-primary_assets-01.pdf",
+          "page": 1,
+          "quote": "Component AST-001: ticket database. Inspection completed 3 October 2026. Customer data for Aster Finance is stored in Mumbai, India (asia-south1).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "88aa092b01884b3da8e40e2957dd6dfe",
+          "document_name": "scale-primary_assets-02.pdf",
+          "page": 1,
+          "quote": "Component AST-002: customer contact index. Inspection completed 4 October 2026. Customer data for Aster Finance is stored in Delhi, India (asia-south2).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "86c15a6f84a642f38597a0670ab660c9",
+          "document_name": "scale-primary_assets-03.pdf",
+          "page": 1,
+          "quote": "Component AST-003: conversation search index. Inspection completed 5 October 2026. Customer data\nfor Aster Finance is stored in Mumbai, India (asia-south1).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "0d4bd996f59346c88e721a865354faef",
+          "document_name": "scale-primary_assets-04.pdf",
+          "page": 1,
+          "quote": "Component AST-004: attachment metadata store. Inspection completed 6 October 2026. Customer data\nfor Aster Finance is stored in Delhi, India (asia-south2).",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "backup_location",
+      "status": "conflicting_evidence",
+      "requirement": "All customer-data backups for Nimbus Support's Customer Support Platform production service must remain physically stored in India throughout October 2026.",
+      "explanation": "The vendor stated in questionnaire-202610.pdf (page 1) that all production customer data and backups, including disaster-recovery replicas, are stored exclusively in India with no offshore location. However, operational records directly contradict this: backup-inventory-202610.pdf (page 2) and multiple backup job logs show that disaster-recovery replica BKP-SG-02, which contains customer data, is physically stored in Singapore (asia-southeast1).",
+      "next_action": "Engage the vendor to address the policy breach regarding offshore backup replication and request a remediation plan to relocate all customer-data replicas to India.",
+      "follow_up_question": "Why is customer-data disaster-recovery replica BKP-SG-02 stored in Singapore despite the requirement that all backups remain in India, and what is the timeline to remediate this non-compliance?",
+      "id": "finding-backup_location",
+      "control_name": "Backup location",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "4e74a236ff7840c18e0c7b2804652002",
+          "document_name": "policy-v3.pdf",
+          "page": 1,
+          "quote": "All customer-data backups for Nimbus Support's Customer Support Platform production service must\nremain physically stored in India throughout October 2026.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "7ac1bcc873da45648a45d00ea5097f9e",
+          "document_name": "questionnaire-202610.pdf",
+          "page": 1,
+          "quote": "For October 2026, all production customer data and all production customer-data backups for Aster\nFinance's Customer Support Platform are stored only in India.\nThis answer includes all disaster-recovery replicas, archived customer snapshots and temporary\nrecovery copies. No offshore customer-data backup location is declared.",
+          "role": "claim",
+          "valid": true
+        },
+        {
+          "document_id": "77772839188c4d4ca22ecffc53fb7ec4",
+          "document_name": "backup-inventory-202610.pdf",
+          "page": 1,
+          "quote": "Backup set BKP-IN-01 is located in Mumbai, India (asia-south1). It receives nightly encrypted snapshots\nof CST-PROD-01 with a retention period of 30 days.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "77772839188c4d4ca22ecffc53fb7ec4",
+          "document_name": "backup-inventory-202610.pdf",
+          "page": 2,
+          "quote": "Replica BKP-SG-02 contains Aster Finance production customer-data backups for the Customer Support\nPlatform and is stored in Singapore (asia-southeast1).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "549648efdeed417cbf783e36ddb32339",
+          "document_name": "scale-backup_jobs-01.pdf",
+          "page": 1,
+          "quote": "Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in\nSingapore (asia-southeast1). The payload contains identifiable production customer data.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "1925d1cad1274c8eaec837101c3f49b3",
+          "document_name": "scale-backup_jobs-02.pdf",
+          "page": 1,
+          "quote": "Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in\nSingapore (asia-southeast1). The payload contains identifiable production customer data.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "42858309a68f4029812670aaa5b67a31",
+          "document_name": "scale-backup_jobs-03.pdf",
+          "page": 1,
+          "quote": "Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in\nSingapore (asia-southeast1).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "99a86c0bed1f4eeba1fe47dcdc52b940",
+          "document_name": "scale-backup_jobs-04.pdf",
+          "page": 1,
+          "quote": "Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in\nSingapore (asia-southeast1).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "fbf9852db1374d389b4bfa231b09a58d",
+          "document_name": "scale-backup_jobs-05.pdf",
+          "page": 1,
+          "quote": "Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in\nSingapore (asia-southeast1).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "d7ac75469a1e44af87b7aeef36b0ca19",
+          "document_name": "scale-backup_jobs-06.pdf",
+          "page": 1,
+          "quote": "Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in\nSingapore (asia-southeast1).",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "5bb7b81be5b64f8494d260353408ddce",
+          "document_name": "scale-backup_jobs-07.pdf",
+          "page": 1,
+          "quote": "Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in\nSingapore (asia-southeast1). The payload contains identifiable production customer data.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "06e0851538214f569487a13ae775978a",
+          "document_name": "scale-backup_jobs-08.pdf",
+          "page": 1,
+          "quote": "Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in\nSingapore (asia-southeast1). The payload contains identifiable production customer data.",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "deletion",
+      "status": "not_evidenced",
+      "requirement": "The vendor must provide a completed deletion certificate for request DEL-2026-041 covering Aster Finance production customer data across primary stores and backups, including execution date, scope, and approver.",
+      "explanation": "No completed deletion certificate or execution log for production deletion request DEL-2026-041 was provided. The vendor acknowledged the request remains open in the security questionnaire, and submitted documents confirm that only forward-looking retention plans and unrelated configuration changes exist rather than an executed deletion certificate with the required date, scope, and approver.",
+      "next_action": "Request the completed deletion certificate and execution log for request DEL-2026-041 from Nimbus Support.",
+      "follow_up_question": "Can Nimbus Support supply the finalized deletion certificate or execution log for request DEL-2026-041 showing the execution date, scope of removed customer data across primary stores and backups, and the authorizing approver?",
+      "id": "finding-deletion",
+      "control_name": "Deletion evidence",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "4e74a236ff7840c18e0c7b2804652002",
+          "document_name": "policy-v3.pdf",
+          "page": 2,
+          "quote": "Provide a completed deletion certificate for request DEL-2026-041 covering Aster Finance production\ncustomer data, primary stores and backups, with execution date, scope and approver.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "7ac1bcc873da45648a45d00ea5097f9e",
+          "document_name": "questionnaire-202610.pdf",
+          "page": 2,
+          "quote": "The request for completed deletion evidence DEL-2026-041 remains open. A retention schedule\ndescribes intended periods but is not an execution certificate.",
+          "role": "claim",
+          "valid": true
+        },
+        {
+          "document_id": "6952a75193a943128b702060ec08907d",
+          "document_name": "evidence-register-202610.pdf",
+          "page": 1,
+          "quote": "No completed deletion certificate or execution log for production request DEL-2026-041 has been supplied in this review pack. DEL-2026-041 requested removal of closed production customer records from primary stores and backups. The vendor has acknowledged the request but has not supplied the required completion evidence.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "4985cc2f3a9e4da58a42e278d2918819",
+          "document_name": "scale-retention_plans-01.pdf",
+          "page": 1,
+          "quote": "This is a future execution plan and contains no completed deletion certificate, execution timestamp or signed completion approval for DEL-2026-041.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "c3ec1066dc944e6dbbd62b4d12cc174a",
+          "document_name": "scale-change_approvals-01.pdf",
+          "page": 1,
+          "quote": "Completion evidence covers this configuration change only, not deletion request DEL-2026-041 or a blanket certification of vendor compliance.",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "access_review",
+      "status": "evidence_found",
+      "requirement": "Provide an approved access review completed within the last 90 days covering all privileged production accounts and documenting removals or an explicit no-removal decision.",
+      "explanation": "Operational records demonstrate that on October 8, 2026, the service owner conducted an access review covering all 12 privileged production accounts for the Customer Support Platform, retaining 11 and revoking one dormant account. The security approver formally signed the review on October 9, 2026, fulfilling the requirement within the designated 90-day window.",
+      "next_action": "Archive the approved privileged access review as verified operational evidence for the October 2026 review period.",
+      "follow_up_question": "None required.",
+      "id": "finding-access_review",
+      "control_name": "Access reviews",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "4e74a236ff7840c18e0c7b2804652002",
+          "document_name": "policy-v3.pdf",
+          "page": 2,
+          "quote": "Provide an approved access review completed in the last 90 days that covers all privileged production\naccounts and records removals or an explicit no-removal decision.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "befa8887980b4fa3aee3cb9ef4e972ea",
+          "document_name": "access-review-202610.pdf",
+          "page": 1,
+          "quote": "Review AR-2026-10 covers Nimbus Support's Customer Support Platform production service for Aster Finance, including database, backup operations and platform administration roles. On 8 October 2026, the service owner reviewed all 12 privileged production accounts, retained 11 and revoked one dormant account; the security approver signed the completed review on 9 October 2026.",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "incident_response",
+      "status": "evidence_found",
+      "requirement": "A signed service commitment must require notification to Aster Finance within 24 hours of discovering a customer-data incident and identify a monitored incident contact.",
+      "explanation": "A signed service addendum explicitly requires Nimbus Support to notify Aster Finance within 12 hours of discovering a customer-data incident affecting the Customer Support Platform production service, satisfying the 24-hour notification deadline. The commitment also designates a continuously monitored incident contact email address.",
+      "next_action": "Record the signed addendum as satisfactory evidence for the incident response notification commitment and proceed to monitor annual renewal.",
+      "follow_up_question": "Can the vendor confirm if the designated incident desk contact remains the primary contact point for future contract periods?",
+      "id": "finding-incident_response",
+      "control_name": "Incident response",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "4e74a236ff7840c18e0c7b2804652002",
+          "document_name": "policy-v3.pdf",
+          "page": 3,
+          "quote": "A signed service commitment must require notification to Aster Finance within 24 hours of discovering a\ncustomer-data incident and identify a monitored incident contact.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "4bdc4ab42dde46a1a58516017639a197",
+          "document_name": "incident-addendum-202610.pdf",
+          "page": 1,
+          "quote": "Nimbus Support must notify Aster Finance within 12 hours of discovering a customer-data incident affecting the Customer Support Platform production service; the monitored contact is incident-desk@nimbus.example. The incident desk is staffed continuously. Nimbus must provide an initial impact statement, then updates every 24 hours until containment.",
+          "role": "support",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "evidence_currency",
+      "status": "evidence_found",
+      "requirement": "Operational evidence used for this review must be dated within 90 days of 15 October 2026, identify the same vendor, service, and production environment, and exclude superseded records.",
+      "explanation": "The submitted backup replication operational records confirm coverage for the current October 2026 service, matching the review period, vendor, service, and production environment without being staging exports or superseded earlier inventories.",
+      "next_action": "Archive the validated operational records as current evidence for the October 2026 review cycle.",
+      "follow_up_question": "Can the vendor confirm whether any additional operational records generated for the October 2026 period supersede the submitted backup logs?",
+      "id": "finding-evidence_currency",
+      "control_name": "Evidence currency",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "4e74a236ff7840c18e0c7b2804652002",
+          "document_name": "policy-v3.pdf",
+          "page": 3,
+          "quote": "Operational evidence used for this review must be dated within 90 days of 15 October 2026 and identify\nthe same vendor, service and production environment; superseded records must be excluded.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "42858309a68f4029812670aaa5b67a31",
+          "document_name": "scale-backup_jobs-03.pdf",
+          "page": 1,
+          "quote": "This record covers the current\nOctober 2026 service; it is not a staging export or an earlier inventory.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "99a86c0bed1f4eeba1fe47dcdc52b940",
+          "document_name": "scale-backup_jobs-04.pdf",
+          "page": 1,
+          "quote": "This record covers the current\nOctober 2026 service; it is not a staging export or an earlier inventory.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "fbf9852db1374d389b4bfa231b09a58d",
+          "document_name": "scale-backup_jobs-05.pdf",
+          "page": 1,
+          "quote": "This record covers the current\nOctober 2026 service; it is not a staging export or an earlier inventory.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "d7ac75469a1e44af87b7aeef36b0ca19",
+          "document_name": "scale-backup_jobs-06.pdf",
+          "page": 1,
+          "quote": "This record covers the current\nOctober 2026 service; it is not a staging export or an earlier inventory.",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    }
+  ],
+  "documents": [
+    {
+      "id": "4e74a236ff7840c18e0c7b2804652002",
+      "name": "policy-v3.pdf",
+      "sha256": "d6679f631290b6c259ad3ef350b6b26f7a067a9bfc412339fca735daed7f8556",
+      "page_count": 3,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "October 2026",
+        "version": "3.0",
+        "document_type": "policy",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Buyer internal policy v3.0 applicable to Nimbus Support Customer Support Platform production environment for October 2026 review."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "7ac1bcc873da45648a45d00ea5097f9e",
+      "name": "questionnaire-202610.pdf",
+      "sha256": "049514b758db709dd4c797ea6d91d022265f6efb3f01d8395355e10ec5643d19",
+      "page_count": 2,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "October 2026",
+        "version": "",
+        "document_type": "questionnaire",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Vendor security questionnaire signed October 2026 for Nimbus Support Customer Support Platform production service."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "77772839188c4d4ca22ecffc53fb7ec4",
+      "name": "backup-inventory-202610.pdf",
+      "sha256": "027ced4de34dd41c402ff7f440cdf1c08245c5034926bb739e9d221a7bf40798",
+      "page_count": 2,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "1-31 October 2026",
+        "version": "INV-2026-10",
+        "document_type": "inventory",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Production backup inventory verified 12 October 2026 covering October 2026 for Nimbus Support Customer Support Platform production environment."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "245a112da84645439e9a127646d4b7dd",
+      "name": "primary-assets-202610.pdf",
+      "sha256": "48e830d7d68e51dca23dd80752dc20cc19f27769517cd3d89261f374ed62e011",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "October 2026",
+        "version": "",
+        "document_type": "inventory",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Asset register verified 11 October 2026 for Nimbus Support Customer Support Platform production environment for October 2026."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "befa8887980b4fa3aee3cb9ef4e972ea",
+      "name": "access-review-202610.pdf",
+      "sha256": "3aa3b8350797a0ec42fb516e0e3501a74eef27eace4d97dbace7038269365c90",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "access-review-202610",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches the vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "4bdc4ab42dde46a1a58516017639a197",
+      "name": "incident-addendum-202610.pdf",
+      "sha256": "c26297435bec29fa2101af30b834632951e50b27dd31fb15d45b5f10921db2e0",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10-01 to 2027-09-30",
+        "version": "IA-2026-10",
+        "document_type": "signed_commitment",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Executed agreement matching vendor, service, production environment, covering October 2026."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "6952a75193a943128b702060ec08907d",
+      "name": "evidence-register-202610.pdf",
+      "sha256": "30f617aa5e29917f85b81e1c0fa6e5ead4225e304fd8f1b3a689ecbbafee299e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "evidence-register-202610",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Directly matches review scope for Nimbus Support's Customer Support Platform production service for October 2026."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "b9a2167d2e2b4f43b4ff92e17b69e0cf",
+      "name": "old-questionnaire-202501.pdf",
+      "sha256": "a4b41ea5a985cbfeac02e53de4ad6dec2ffe8d78e0dda33031fda9bbc4eb7e43",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2025-01",
+        "version": "old-questionnaire-202501",
+        "document_type": "questionnaire",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Historical January 2025 questionnaire explicitly marked superseded by the October 2026 review questionnaire."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "d1105330b5a243db9b98edc50df9ab00",
+      "name": "other-vendor-deletion.pdf",
+      "sha256": "58261eeb05b784ba135fe1b861de95bbb4c24ebe82eec3daa6e8be412e36333e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Cedar Analytics",
+        "service": "Marketing Insights",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to Cedar Analytics and Marketing Insights service, explicitly stating it does not cover Nimbus Support or Customer Support Platform."
+      },
+      "scope_exclusion": "Relates to Cedar Analytics and Marketing Insights service, explicitly stating it does not cover Nimbus Support or Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "6345a808eec5410589dfad4f43611c05",
+      "name": "untrusted-attachment.pdf",
+      "sha256": "6632b1b68d6da2dd5bdf35cdda7642154910caa6bc263009a5131354533394f3",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "",
+        "service": "",
+        "environment": "",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "other",
+        "currency": "unknown",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Forwarded untrusted attachment containing adversarial prompt injection test text with unverified source authenticity."
+      },
+      "scope_exclusion": "Forwarded untrusted attachment containing adversarial prompt injection test text with unverified source authenticity.",
+      "suspicious_instructions": true
+    },
+    {
+      "id": "3679339899c349a09bc7eb0598d70611",
+      "name": "scale-primary_assets-01.pdf",
+      "sha256": "a04fbbe971df50beb73d31aef27bdfcbef6388f49273c8cba24c1330ceafaf5e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Production asset inspection for Nimbus Support Customer Support Platform covering period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "88aa092b01884b3da8e40e2957dd6dfe",
+      "name": "scale-primary_assets-02.pdf",
+      "sha256": "01ea430a85c26a73e7736a014b5a29f68acdd9616241c575b052e654d166f87f",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Production asset inspection for Nimbus Support Customer Support Platform covering period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "86c15a6f84a642f38597a0670ab660c9",
+      "name": "scale-primary_assets-03.pdf",
+      "sha256": "76465dceefc7e3dc5168d5b716dc8b9ec9c360e310c59be7d881c3b6a134b61f",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-primary_assets-03",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "0d4bd996f59346c88e721a865354faef",
+      "name": "scale-primary_assets-04.pdf",
+      "sha256": "cac57355641853652882aaf0e4c2ce53d081a5aa6819ce8dff5eece4fa7c6b55",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-primary_assets-04",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "083240864c2e4db5ab0fdaf6bfe1548c",
+      "name": "scale-primary_assets-05.pdf",
+      "sha256": "6a410e0277659573efd7a0039c26ba6cd16eef2bcae717f99569021af8d86c70",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-primary_assets-05",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "71722933b6c249d48d07861c86c10859",
+      "name": "scale-primary_assets-06.pdf",
+      "sha256": "6c8ea55a4054f57fefddd858de5f7a0f6f4bbf6ebad89314d720528ca46d4c21",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-primary_assets-06",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "d04a5361347e4f92a6f557d43cdd5d47",
+      "name": "scale-primary_assets-07.pdf",
+      "sha256": "43dc80711fb5794ac8abd1f8648b2ffc8c0422520924ef5a6b9ec786777af2b0",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-primary_assets-07",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "887cbaae71e144cdb8c21c08e5f0d9b3",
+      "name": "scale-primary_assets-08.pdf",
+      "sha256": "2a94138a946a5f8ba198b155d2b2f2483b3de037c68b5c59ffbd6bcc2c0455e3",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-primary_assets-08",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "549648efdeed417cbf783e36ddb32339",
+      "name": "scale-backup_jobs-01.pdf",
+      "sha256": "49e423582a3649562cf0538d439ad1b5715af8fb30bd75d4b1f82ed51c29b06e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-backup_jobs-01",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "1925d1cad1274c8eaec837101c3f49b3",
+      "name": "scale-backup_jobs-02.pdf",
+      "sha256": "67359e96f0d97821c58b4ec306c3532c7c9f3c72b745a6c2de16cc5df8409871",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-backup_jobs-02",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "42858309a68f4029812670aaa5b67a31",
+      "name": "scale-backup_jobs-03.pdf",
+      "sha256": "67d554894b7b92aabc740a208a08af22b8f9ecb2622f693cdde7d3cfbd4a3546",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "99a86c0bed1f4eeba1fe47dcdc52b940",
+      "name": "scale-backup_jobs-04.pdf",
+      "sha256": "75a5edffa322d473f8885937e15834b6d68a6c8e3500f92173d624e1c9f8ea42",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "fbf9852db1374d389b4bfa231b09a58d",
+      "name": "scale-backup_jobs-05.pdf",
+      "sha256": "a52c14a9d7452eb16dbfe545b52b7f22ccf3e5e32481f190e0af1383a20dc72e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "d7ac75469a1e44af87b7aeef36b0ca19",
+      "name": "scale-backup_jobs-06.pdf",
+      "sha256": "6c224313d482c41eb6a32ef5130f774eaffdcb9df17ce18ab9bd7c3728c9dd9f",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "5bb7b81be5b64f8494d260353408ddce",
+      "name": "scale-backup_jobs-07.pdf",
+      "sha256": "498515379eda370a0cce4deed401122f7d578415a112bf15ba458466aa6fb847",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-backup_jobs-07",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor Nimbus Support, Customer Support Platform, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "06e0851538214f569487a13ae775978a",
+      "name": "scale-backup_jobs-08.pdf",
+      "sha256": "6a2ac7e832b28c07392d2a11b4007607f30cfdc87ec46d087309611cd7596efb",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-backup_jobs-08",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor Nimbus Support, Customer Support Platform, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "938458a4cd5748968e7e403f2039091c",
+      "name": "scale-access_domains-01.pdf",
+      "sha256": "4985302074bc317c28ad4ee56cf7e488dc2e32769601cded57559fa352ec0d80",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-access_domains-01",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor Nimbus Support, Customer Support Platform, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "eb8cc7ebd6224175a13479c8b5febbb9",
+      "name": "scale-access_domains-02.pdf",
+      "sha256": "51ebdfb12c1782f3989385a81cb3f57f12f29f44acbf2610d82f26aca276d749",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-access_domains-02",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor Nimbus Support, Customer Support Platform, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "54099f6b11f34edbb4e59767526b0d60",
+      "name": "scale-access_domains-03.pdf",
+      "sha256": "468a41ecca4da4be4646a359e01fc02a947f1ae7a85fa658e12b8437e34f5b1e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-access_domains-03",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and period exactly."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "7ced5c4a4558406c9165f0b53a63e186",
+      "name": "scale-access_domains-04.pdf",
+      "sha256": "17d6387c88f4e88546183ef3259609dc37c7b0859c2a7a31a3965ba128d1ea03",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-access_domains-04",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and period exactly."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "1a0c1a0e46014afc9311cf8b6a669048",
+      "name": "scale-access_domains-05.pdf",
+      "sha256": "a000bbcc0a0a926937d704f307062770087b8a99015fbc82af40ad67a9de2fdc",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-access_domains-05",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and period exactly."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "588eaffbcc6a4303ba32eb7b754f75e3",
+      "name": "scale-access_domains-06.pdf",
+      "sha256": "641f014eab9b92557779f4cdcff204287fe957e7156a1c25454cb7ee1c5ff3a6",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-access_domains-06",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and period exactly."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "7614457e497e4d0eaf214c3d607be21b",
+      "name": "scale-access_domains-07.pdf",
+      "sha256": "e7a95c2de17f8eb16520a141b6c5122af69f45a94316f3bfef8c407d04523aab",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-access_domains-07",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and relevant period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "7485cad66e2a4faca883df3c2da904c6",
+      "name": "scale-access_domains-08.pdf",
+      "sha256": "93a785aa615101826efb0a976169a49b75b8a56b6d5d2abd2e3267031586a597",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-access_domains-08",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and relevant period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "8105685c976c4978aeb78c99c3dee4ba",
+      "name": "scale-incident_drills-01.pdf",
+      "sha256": "e88f6f3adcf4d76d6468991925c5693e87803862bb5448f5035218b17eded10f",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-incident_drills-01",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "6e0412f31da7438eb312526b61814580",
+      "name": "scale-incident_drills-02.pdf",
+      "sha256": "eaac6ed86c6c5b9a71649a6820b216c8920b00db40a60547a5c30570495a5ffd",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-incident_drills-02",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "ba56361b3acd41cc9e87abb3a3825a7e",
+      "name": "scale-incident_drills-03.pdf",
+      "sha256": "c7c32b9402d765b47d33c30bb2dd80098ff18f306b623846d27a8e59a67f4c33",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-incident_drills-03",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and the 2026-10 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "672904b9bc24488b94f00054d18d96bd",
+      "name": "scale-incident_drills-04.pdf",
+      "sha256": "36c831115a0436cbfecb4dcaa2c9e699435aac9d2a4b40debce8fbdb066987a8",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-incident_drills-04",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and review period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "52db560314514fbca7a1d34662a16aa7",
+      "name": "scale-incident_drills-05.pdf",
+      "sha256": "da5eea5c2f0792d1711eb8ba936378c2a890386b2209efc86f6d07d7c47744cc",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-incident_drills-05",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "cb4e03a846d7471fa49288b2448afe5b",
+      "name": "scale-incident_drills-06.pdf",
+      "sha256": "eef433c4b935e5001ce4d9d1db6ca266c552ce66c01eb955d4f6b118bc66d44f",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-incident_drills-06",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "cbd8c44f7afa4fbcae76b900f0d6f907",
+      "name": "scale-incident_drills-07.pdf",
+      "sha256": "0e5f50c0b4ae939f24467c3bd6b2cbc49115fab7aedaee84faa6ccb7d605448d",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-incident_drills-07",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "09c5196771954d6195d65c5173f8838a",
+      "name": "scale-incident_drills-08.pdf",
+      "sha256": "b1e874c681c31b6ec07a29987682f30512bc34f7eb1ecf0a4eae866a737d7c78",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-incident_drills-08",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "dc7c32a216bd4f1f874c7b912e413280",
+      "name": "scale-subprocessors-01.pdf",
+      "sha256": "53edbb84aa683e4eae1cd5ceca9e6dc8dd0cd40dc3590c372a8ce8d41dc19636",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-subprocessors-01",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "3902b6161357490fb4edf68167ab8b7f",
+      "name": "scale-subprocessors-02.pdf",
+      "sha256": "fefadc23d720f13e7a91d3eec8dafa1f6bea9b390759acdc17b59a51f0fe977f",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-subprocessors-02",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "485a7e725a8047f58ef2fb7a7dce433d",
+      "name": "scale-subprocessors-03.pdf",
+      "sha256": "908818b3d009315779f24f10d1745bb39e242ca9f4a0de486f9cda721502a559",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-subprocessors-03",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "4e1272b9a34a4d2b811e363ae3921be5",
+      "name": "scale-subprocessors-04.pdf",
+      "sha256": "3d325127d1c61ca9a17e8bc08b8d70c06aa637c9dbbda0565869b8bf7a5e453f",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-subprocessors-04",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "0211f22a784c40639b143f08b80160b2",
+      "name": "scale-subprocessors-05.pdf",
+      "sha256": "1f8b27d17f6b22970a65a68df67d27db370bb8e30b070bbaf347ee67abcef129",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-subprocessors-05",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "9458fc7c3d57418e9ff44c74592785f9",
+      "name": "scale-subprocessors-06.pdf",
+      "sha256": "3e1a2982ff2c553316635fa00823f84256fba5ebea0945df4b25a980cc5e12a7",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-subprocessors-06",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "5c02ac3e604a428da77e0db1216860e6",
+      "name": "scale-subprocessors-07.pdf",
+      "sha256": "a936517af5a8460000b5f96c86fa62f612ebf2fd470200710c62041d1a8d267f",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-subprocessors-07",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and coverage period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "662525bfd08843f7874fa7f884adbbee",
+      "name": "scale-subprocessors-08.pdf",
+      "sha256": "a0bc354da9b2bd48e8081cc5d136a5874cb42a0ee9271d626e7927dbc48216d2",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-subprocessors-08",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and coverage period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "4985cc2f3a9e4da58a42e278d2918819",
+      "name": "scale-retention_plans-01.pdf",
+      "sha256": "e8e99212c1c562f4dfe37171d82c85aff685396b4c0475f29819f02b6f7891bb",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-retention_plans-01",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and coverage period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "689122ab390c481ca8dbce6dff08a818",
+      "name": "scale-retention_plans-02.pdf",
+      "sha256": "e1db70eef519d5a29b83886d5439cd2387f4d06726895e1f3e011067a1b959b6",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-retention_plans-02",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and coverage period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "08b70202ab57402eac2797a6b6a8308e",
+      "name": "scale-retention_plans-03.pdf",
+      "sha256": "b2c148171cf421d77850edaf3f2d2eb6e219596e91e3a345ff10d17e4872c1ca",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-retention_plans-03",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Retention planning note specifically targets the reviewed vendor, service, production environment, and October 2026 period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "8e8e2218704245469a8606362d51be8e",
+      "name": "scale-retention_plans-04.pdf",
+      "sha256": "9f646568a2323827cfe085d1a6dbb73a4021640deda867c02611776c2169816b",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-retention_plans-04",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Retention planning note specifically targets the reviewed vendor, service, production environment, and October 2026 period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "14c99971ebf240c5976b03acfd219a61",
+      "name": "scale-retention_plans-05.pdf",
+      "sha256": "2ab029df2ee32667287695798579cb17c8b1e2568740159683a4044b15c2ec19",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-retention_plans-05",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Retention planning note specifically matches the reviewed vendor, service, production environment, and October 2026 period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "31907d8ddb62402686e50aba52e30392",
+      "name": "scale-retention_plans-06.pdf",
+      "sha256": "4893ca7cd04f77ca3ae800f6629e59edd14d49b1620c25532660c05bb35efaa1",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-retention_plans-06",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Retention planning note corresponds to the reviewed vendor, service, production environment, and October 2026 period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "527f7907291b41f08b144eae2ea9ff27",
+      "name": "scale-retention_plans-07.pdf",
+      "sha256": "8f2aeb1e874c0318cd329c34da45c73a92a681ec88357da5e1e24aaba1e053f3",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-retention_plans-07",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches the review scope for vendor Nimbus Support, Customer Support Platform, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "ef0b2c4041a2484ca16cafd55a3c3f69",
+      "name": "scale-retention_plans-08.pdf",
+      "sha256": "8de5466ad0a479b32f1c67f19a6844f8b8c52fec133516a4dc707d8e2aca9ace",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-retention_plans-08",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches the review scope for vendor Nimbus Support, Customer Support Platform, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "29bb921426fd41f880ff877a34287f4a",
+      "name": "scale-wrong_vendor-01.pdf",
+      "sha256": "50d0854cfc2105b2811452020cbe99b2c96f983953047a7d8e84d3226a0f9365",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Cedar Analytics",
+        "service": "Analytics Service",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-wrong_vendor-01",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Applies to vendor Cedar Analytics and Analytics Service rather than Nimbus Support and Customer Support Platform."
+      },
+      "scope_exclusion": "Applies to vendor Cedar Analytics and Analytics Service rather than Nimbus Support and Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "2b401a91b0754343a11abc28f24b2165",
+      "name": "scale-wrong_vendor-02.pdf",
+      "sha256": "9c59fa4c2de9f6b5cc4cec73085ef1959fc341115da8b4aeef65b93eaf50221b",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Maple Payments",
+        "service": "Payments Service",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-wrong_vendor-02",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Applies to vendor Maple Payments and Payments Service rather than Nimbus Support and Customer Support Platform."
+      },
+      "scope_exclusion": "Applies to vendor Maple Payments and Payments Service rather than Nimbus Support and Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "8c11fef77e3a45568f0c6a5b856a921e",
+      "name": "scale-wrong_vendor-03.pdf",
+      "sha256": "55fafced3019ad5c63572ed0a5a1cee706bd0d040120aa3b9d92d9243d3f71fa",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Willow Messaging",
+        "service": "Messaging Service",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-wrong_vendor-03",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document pertains to vendor Willow Messaging and service Messaging Service, rather than the reviewed vendor Nimbus Support and service Customer Support Platform."
+      },
+      "scope_exclusion": "The document pertains to vendor Willow Messaging and service Messaging Service, rather than the reviewed vendor Nimbus Support and service Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "9d6c7be463d24a0989cd74b787d7f110",
+      "name": "scale-wrong_vendor-04.pdf",
+      "sha256": "81942a5c1192ab99ad5dec1acdb85c9f536bb37e778587368f557e82aa67f7c7",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Juniper Hosting",
+        "service": "Hosting Service",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-wrong_vendor-04",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document applies to vendor Juniper Hosting and service Hosting Service, which does not match the review scope for Nimbus Support and Customer Support Platform."
+      },
+      "scope_exclusion": "The document applies to vendor Juniper Hosting and service Hosting Service, which does not match the review scope for Nimbus Support and Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "4b306652b05d4bd0a517c8971f3f2920",
+      "name": "scale-wrong_vendor-05.pdf",
+      "sha256": "d0c2592b113eaf403fbf66cc338813f0a2358327010de5c87897a12c13968a69",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Birch Search",
+        "service": "Search Service",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-wrong_vendor-05",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document covers Birch Search and Search Service, not the reviewed vendor Nimbus Support and Customer Support Platform."
+      },
+      "scope_exclusion": "The document covers Birch Search and Search Service, not the reviewed vendor Nimbus Support and Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "5b1555e10ebe4047904f2f639be6e00c",
+      "name": "scale-wrong_vendor-06.pdf",
+      "sha256": "e3b75ad1d7e55836309fe90164cfc2ef7cde00dafa91b0977f26a230942535c7",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Aspen Archive",
+        "service": "Archive Service",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-wrong_vendor-06",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document covers Aspen Archive and Archive Service, outside the scope of vendor Nimbus Support and Customer Support Platform."
+      },
+      "scope_exclusion": "The document covers Aspen Archive and Archive Service, outside the scope of vendor Nimbus Support and Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "63bff7cffa3a42b9b53c56173805da10",
+      "name": "scale-wrong_vendor-07.pdf",
+      "sha256": "aaea0ff3e646eda35b8f38413a04863b0607135cfd4b806d43f72aa038d9e44b",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Elm Identity",
+        "service": "Identity Service",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to vendor Elm Identity and service Identity Service rather than Nimbus Support's Customer Support Platform."
+      },
+      "scope_exclusion": "Relates to vendor Elm Identity and service Identity Service rather than Nimbus Support's Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "161266dd201b42b39b67dbd36227265d",
+      "name": "scale-wrong_vendor-08.pdf",
+      "sha256": "4292dc31865c4f2da6a9b6e91d9f4b1c192e67eb3c4bc7b165eb9357b7b6473c",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Pine Reports",
+        "service": "Reports Service",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to vendor Pine Reports and service Reports Service rather than Nimbus Support's Customer Support Platform."
+      },
+      "scope_exclusion": "Relates to vendor Pine Reports and service Reports Service rather than Nimbus Support's Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "ef7aff18f75d455b82ccf933676ed88a",
+      "name": "scale-wrong_environment-01.pdf",
+      "sha256": "bc44f82511841b250692316e7f085086ac7fa1f495068291af0e9089913eb061",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "staging",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Applies to the staging environment rather than production."
+      },
+      "scope_exclusion": "Applies to the staging environment rather than production.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "606d72038e8d476584465a4b2bdb95a5",
+      "name": "scale-wrong_environment-02.pdf",
+      "sha256": "dc3624be2ef7e5a149021c285904fb56f6e6718eb27d8ed247fcc8f9b92d3b1a",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "staging",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Applies to the staging environment rather than production."
+      },
+      "scope_exclusion": "Applies to the staging environment rather than production.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "caeb1d498c514ab88248cfe4127671e6",
+      "name": "scale-wrong_environment-03.pdf",
+      "sha256": "60142d86c0cb741b6fee39ce42b986bc2a26087505779e5ac0ea37ab9baf593e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "staging",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Applies to the staging environment, whereas the review scope requires the production environment."
+      },
+      "scope_exclusion": "Applies to the staging environment, whereas the review scope requires the production environment.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "dd2d4d0624454bc79ee8da20d0045686",
+      "name": "scale-wrong_environment-04.pdf",
+      "sha256": "384a6b327fc68ea35b9f7d61b221eb9c90fdac2d9963557bebf3e95ffd279c85",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "staging",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Applies to the staging environment rather than the requested production environment."
+      },
+      "scope_exclusion": "Applies to the staging environment rather than the requested production environment.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "d1288679b62c44c9afcfdabb869e24b1",
+      "name": "scale-wrong_environment-05.pdf",
+      "sha256": "d2d17a7e92725c9b7656c4ef0fadade2b917cba593c098f6e98f655216b358d7",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "staging",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Applies to the staging environment rather than the requested production environment."
+      },
+      "scope_exclusion": "Applies to the staging environment rather than the requested production environment.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "f508d10d46ed4f9f8760f7e9db5c10bc",
+      "name": "scale-wrong_environment-06.pdf",
+      "sha256": "7048ff52fb84873dc91d7e723472dbacc6944e3fb1dc57efc977d386129efd90",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "staging",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Applies to the staging environment rather than the requested production environment."
+      },
+      "scope_exclusion": "Applies to the staging environment rather than the requested production environment.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "503bdb31d7724afb96fbf4b74a995bab",
+      "name": "scale-wrong_environment-07.pdf",
+      "sha256": "23d8d3d021ade48ade12e9f556b7c8e28d6413acd9432755865580ff8cf3f865",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "staging",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Record explicitly pertains to the staging environment and synthetic test tenants, whereas the review scope requires the production environment."
+      },
+      "scope_exclusion": "Record explicitly pertains to the staging environment and synthetic test tenants, whereas the review scope requires the production environment.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "383fbb351c5a4255b8b5df3228558271",
+      "name": "scale-wrong_environment-08.pdf",
+      "sha256": "a891f0bf61ddcc6123c77ec0a40eb479415432e04bbe1d4b7cebfdd790318870",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "staging",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Document explicitly covers the staging environment rather than the production environment required by the review scope."
+      },
+      "scope_exclusion": "Document explicitly covers the staging environment rather than the production environment required by the review scope.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "077dff2447174f248a51457f38bdee6b",
+      "name": "scale-obsolete-01.pdf",
+      "sha256": "391fe6e7b7d68b250e3fa7ed334894f27670fa71aa724d71942128c4c94c303a",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2024-11",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Document is an archived review covering period 2024-11, retired on 1 October 2026 and superseded, outside the review scope period of 2026-10."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "3cab3abdbd364968af047698d1e93815",
+      "name": "scale-obsolete-02.pdf",
+      "sha256": "81118141550d84830c81ed3bf6e243880e33d298fb7a740e79f73d2955e3029e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2025-01",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Document covers historical period 2025-01, retired on 1 October 2026 and superseded, outside the required 2026-10 review scope."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "4ee7d48e88694181ac731df48fe0e512",
+      "name": "scale-obsolete-03.pdf",
+      "sha256": "c02a5626997f977bc30970a67c3139c45ba8a0866898bb4cf287fbdc3dd66713",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2025-03",
+        "version": "scale-obsolete-03",
+        "document_type": "operational_record",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document covers period 2025-03 rather than the required review period 2026-10, and explicitly states it was retired on 1 October 2026 and is superseded."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "d03f226b53c643a5b1c48b77de19910a",
+      "name": "scale-obsolete-04.pdf",
+      "sha256": "15aebcb1f4a934edc442711b78e6f22c62e3ebe520471e1e536920a0e7cf10eb",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2025-05",
+        "version": "scale-obsolete-04",
+        "document_type": "operational_record",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document covers historical period 2025-05 rather than review period 2026-10, and was retired on 1 October 2026."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "3be619227d1a4e498ed635a9295fb5c0",
+      "name": "scale-obsolete-05.pdf",
+      "sha256": "ac51d4244148ff477a4f50c0f66d7138c74f34053d6a9c5b87d28a4d9ed4e5b9",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2025-08",
+        "version": "scale-obsolete-05",
+        "document_type": "operational_record",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document covers period 2025-08 rather than 2026-10, and explicitly notes retirement on 1 October 2026."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "87fe0030029f40c4a7f118e7de507395",
+      "name": "scale-obsolete-06.pdf",
+      "sha256": "2001ede53a9f4dfefdec5df9b0903c3a36c9df191dd943091b1f53e8f9ef1d39",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2025-11",
+        "version": "scale-obsolete-06",
+        "document_type": "operational_record",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document covers period 2025-11 instead of 2026-10 and was retired on 1 October 2026."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "cb00b547a0f94f1fa74e1a1395b07111",
+      "name": "scale-obsolete-07.pdf",
+      "sha256": "706876df84d728f0b5bfb22f4991129f97e2575fb2818284d62a29542dfe7700",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-02",
+        "version": "scale-obsolete-07",
+        "document_type": "operational_record",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document covers period 2026-02 and states it was retired on 1 October 2026 and superseded, falling outside the required 2026-10 review period."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "88c5eefa715c49d6806e595c1550a56a",
+      "name": "scale-obsolete-08.pdf",
+      "sha256": "fb6335ea81fae434ffbcabce5cc8d5c22699cfe8ef4046f6128739db5772d046",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-06",
+        "version": "scale-obsolete-08",
+        "document_type": "operational_record",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document covers period 2026-06 and explicitly notes it was retired on 1 October 2026 and superseded, falling outside the 2026-10 review scope."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "41189dc26a664b0890d40b9ce817e29c",
+      "name": "scale-irrelevant-01.pdf",
+      "sha256": "2c76098247b4b3970599b0acbe040a7743c560b7fe879b5760a781f9c097f5e9",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Corporate Administration",
+        "environment": "not_applicable",
+        "period": "2026-10",
+        "version": "scale-irrelevant-01",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document relates to Corporate Administration and the office cafeteria rather than the Customer Support Platform production environment."
+      },
+      "scope_exclusion": "The document relates to Corporate Administration and the office cafeteria rather than the Customer Support Platform production environment.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "56e55560577642449975c07858bb5725",
+      "name": "scale-irrelevant-02.pdf",
+      "sha256": "b9e90c2c2564528aec87ae461d584de11b27f0587e5bd373c7777b501c2a4a9c",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Corporate Administration",
+        "environment": "not_applicable",
+        "period": "2026-10",
+        "version": "scale-irrelevant-02",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document relates to Corporate Administration and travel budget rather than the Customer Support Platform production environment."
+      },
+      "scope_exclusion": "The document relates to Corporate Administration and travel budget rather than the Customer Support Platform production environment.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "bd6ab9c505e046fbb25c592f1da20b9f",
+      "name": "scale-irrelevant-03.pdf",
+      "sha256": "b58b1b0cdbda841ad811d4abe9b22d0c3d4a8c24d701ee86137e624146181700",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Corporate Administration",
+        "environment": "not_applicable",
+        "period": "2026-10",
+        "version": "scale-irrelevant-03",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to Corporate Administration service and not_applicable environment rather than Customer Support Platform production."
+      },
+      "scope_exclusion": "Relates to Corporate Administration service and not_applicable environment rather than Customer Support Platform production.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "ad76e29f4fea41d88ce114f9d2611088",
+      "name": "scale-irrelevant-04.pdf",
+      "sha256": "d5f0ed838d21990363a8401922a2191d5d42064ceda57bc488cf524e57e0382d",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Corporate Administration",
+        "environment": "not_applicable",
+        "period": "2026-10",
+        "version": "scale-irrelevant-04",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to Corporate Administration service and not_applicable environment rather than Customer Support Platform production."
+      },
+      "scope_exclusion": "Relates to Corporate Administration service and not_applicable environment rather than Customer Support Platform production.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "c97efa5990e4433981ad16d4f4c7aae7",
+      "name": "scale-irrelevant-05.pdf",
+      "sha256": "ddd031910072f511edfa8eef2a48c59ce8535e7cae9172544b00bcef8b562264",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Corporate Administration",
+        "environment": "not_applicable",
+        "period": "2026-10",
+        "version": "scale-irrelevant-05",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to Corporate Administration service and not_applicable environment rather than Customer Support Platform production."
+      },
+      "scope_exclusion": "Relates to Corporate Administration service and not_applicable environment rather than Customer Support Platform production.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "7a6a180c058c44f7b11c852b19fa838b",
+      "name": "scale-irrelevant-06.pdf",
+      "sha256": "d5ea322b38c63c9099fc150df5934af0bdd7fc8d19a48c9abae80798390f14f7",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Corporate Administration",
+        "environment": "not_applicable",
+        "period": "2026-10",
+        "version": "scale-irrelevant-06",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to Corporate Administration service and not_applicable environment rather than Customer Support Platform production."
+      },
+      "scope_exclusion": "Relates to Corporate Administration service and not_applicable environment rather than Customer Support Platform production.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "c236a8d698694493853bdde40b4557a0",
+      "name": "scale-irrelevant-07.pdf",
+      "sha256": "32c78379fd39348897282f24005b4b0247ea181e8307cdd94ecc5c5a04f31994",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Corporate Administration",
+        "environment": "not_applicable",
+        "period": "2026-10",
+        "version": "scale-irrelevant-07",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to Corporate Administration service and not_applicable environment rather than the Customer Support Platform production environment under review."
+      },
+      "scope_exclusion": "Relates to Corporate Administration service and not_applicable environment rather than the Customer Support Platform production environment under review.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "18881ba1056a4794b21c7c0cf32c3ed3",
+      "name": "scale-irrelevant-08.pdf",
+      "sha256": "ddec50c0bea45701c56af77d6be1863918c824c0ec9e19b424cf30f47c0b1524",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Corporate Administration",
+        "environment": "not_applicable",
+        "period": "2026-10",
+        "version": "scale-irrelevant-08",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Relates to Corporate Administration service and not_applicable environment rather than the Customer Support Platform production environment under review."
+      },
+      "scope_exclusion": "Relates to Corporate Administration service and not_applicable environment rather than the Customer Support Platform production environment under review.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "28212379dde5404a96c0e09c81505a05",
+      "name": "scale-service_tickets-01.pdf",
+      "sha256": "1d49a96c44d08c573c62b98735663392f53390b3e84c3221cbd9066f71d272f3",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-service_tickets-01",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Covers Nimbus Support Customer Support Platform production environment during period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "8c6c1d53ba2d4e088b896df0fe211d6c",
+      "name": "scale-service_tickets-02.pdf",
+      "sha256": "c31829829438bebe551d287b8348a44c02e22282067760b0182301e009ae5321",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-service_tickets-02",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Covers Nimbus Support Customer Support Platform production environment during period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "b9f43aeb8cf44a89bf15d7ea5e9644a3",
+      "name": "scale-service_tickets-03.pdf",
+      "sha256": "3e959e28b775dcc2765559fca77f16e8d32df887206de065805a1b3b3c05044d",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-service_tickets-03",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and coverage period for October 2026 operational records."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "362e500a64c246fd81914bf20681f3af",
+      "name": "scale-service_tickets-04.pdf",
+      "sha256": "c7dc40e34e8647b9d978562c458ca1745e140ffa14cf8a70566157d9ac95f0b5",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-service_tickets-04",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and coverage period for October 2026 operational records."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "a319a2a18fc242f2b121ee125b071775",
+      "name": "scale-service_tickets-05.pdf",
+      "sha256": "ec40480ac18e8b29eea860ead4cf60bb1d65b862ace88aa7d3d8c3d2d06d5914",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-service_tickets-05",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and coverage period for October 2026 operational records."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "2ee89cf0dff84ee2bc527e8a192d4e5c",
+      "name": "scale-service_tickets-06.pdf",
+      "sha256": "2cc669cb150fb4586b5ac0fd7ae8eaa92fc0c4893649221f295ff193616e9e47",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-service_tickets-06",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and coverage period for October 2026 operational records."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "b4f1c88bc6f34e66814cf68c84e85eb4",
+      "name": "scale-service_tickets-07.pdf",
+      "sha256": "80c508c938deb529780de992526c5ead4f3a9d2318a1b0b6d8644dfa045eb3c9",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "6a9e1ad5d85b41d186089fcde3c7b617",
+      "name": "scale-service_tickets-08.pdf",
+      "sha256": "22927178152dd483d5e996c5574a5baa3dc680c87d09ef01065b6f0bc72fe967",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and October 2026 period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "c3ec1066dc944e6dbbd62b4d12cc174a",
+      "name": "scale-change_approvals-01.pdf",
+      "sha256": "3fef3befb287dad21d2a825ef587d15bd327477258f6b8ec319a4a9834a974ce",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Operational record matching vendor, service, environment, and review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "b2b935ff2b4844ee8be6901363e59703",
+      "name": "scale-change_approvals-02.pdf",
+      "sha256": "bd33e342d9e74467a7359cd5906b5fe0d0c644d2f0b9e489045b8d5ee307ba6a",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Operational record matching vendor, service, environment, and review period."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "c967d6c5d01f4fc9b2851d6bf2c8ab19",
+      "name": "scale-change_approvals-03.pdf",
+      "sha256": "3a7dcb08df85b5841bfc0d66383e1fd0a243c6a7598aefa5b03e40664d4aa57d",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and review period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "75d262175a1349d18fd04ef2fc7197d3",
+      "name": "scale-change_approvals-04.pdf",
+      "sha256": "4e2934bd35e496d22c5d133f6c6c9e7e7c06ab65ccb5f9d4ceb2b59ae4f2e431",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and review period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "ab047366d84640e7b5be1512901efb36",
+      "name": "scale-change_approvals-05.pdf",
+      "sha256": "7e59e8d2081bb2792584be95b2b645127c305c2769a487420f96a98117df7562",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and review period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "5fbdf7f67ffe4be0825ec919d7f26e2b",
+      "name": "scale-change_approvals-06.pdf",
+      "sha256": "c5e5e69159e54611c6c84fe18c4c45c5309516f4a8f2183228df5b8f9a76f141",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, environment, and review period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "f0b5b8e5e5c74b73943cdb67383ad529",
+      "name": "scale-change_approvals-07.pdf",
+      "sha256": "cccd19a83e6c964b87e4e54af0dcea5de2d547b2d34c7cb23caffa2d00fa0fc0",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-change_approvals-07",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "23106af7b50c44e78342e075d874c4e4",
+      "name": "scale-change_approvals-08.pdf",
+      "sha256": "35514f4a67d7ba1410185443cabdc9973ce08c2487e556ac19f1bb7657b2452e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "scale-change_approvals-08",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches vendor, service, production environment, and period 2026-10."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    }
+  ]
+}

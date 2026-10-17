@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Signed incident notification addendum
+
+PAGE 1 - Binding service commitment
+Agreement IA-2026-10 between Aster Finance and Nimbus Support. Effective 1 October 2026 through 30 September 2027. Scope: Customer Support Platform production service and its customer-data backups.
+
+Nimbus Support must notify Aster Finance within 12 hours of discovering a customer-data incident affecting the Customer Support Platform production service; the monitored contact is incident-desk@nimbus.example.
+
+The incident desk is staffed continuously. Nimbus must provide an initial impact statement, then updates every 24 hours until containment. The contact address uses the reserved .example domain and is not a real mailbox.
+
+Signed 1 October 2026 by the authorized contracting roles of both fictional parties. This synthetic agreement is marked executed; it is not an unsigned proposal or a statement of real legal obligations.
+

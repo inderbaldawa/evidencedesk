@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Aspen Archive completion certificate
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Aspen Archive. Service: Archive Service. Environment: production. Relevant period: 2026-10.
+
+Certificate OTHER-DEL-006 applies to Aspen Archive's Archive Service for Aster Finance. Fictional approver signed completion on 8 October 2026.
+
+Deletion completed for 1866 records from the unrelated service's primary and backup stores. The record identifies a separate service contract and tenant namespace OTHER-06.
+
+This evidence does not apply to Nimbus Support's Customer Support Platform or request DEL-2026-041, despite being current and naming the same buyer.
+

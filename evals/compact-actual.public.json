@@ -1,0 +1,490 @@
+{
+  "synthetic": true,
+  "source_artifact_sha256": "fa7451ac24415d4761c79d9f48dc02c41f010a3109c526377eefed1f3e6a239a",
+  "scope": {
+    "vendor": "Nimbus Support",
+    "service": "Customer Support Platform",
+    "environment": "production",
+    "period": "2026-10",
+    "policy_version": "3.0"
+  },
+  "status": "complete",
+  "coverage": {
+    "submitted": 10,
+    "processed": 10,
+    "failed": 0,
+    "duplicates": 0,
+    "pages": 14
+  },
+  "analysis": {
+    "model": "gemini-3.8-flash",
+    "version": "evidencedesk-1.1",
+    "generated_at": "2026-10-17T06:25:39.084973+00:00",
+    "duration_seconds": 64.561,
+    "calls": 9,
+    "input_tokens": 17020,
+    "output_tokens": 6163,
+    "estimated_cost_usd": 0.071752,
+    "label": "AI-assisted evidence review; human decision required",
+    "cache_hits": 0,
+    "reconciliation_cache_hits": 0,
+    "complete": true,
+    "citation_validation_failures": []
+  },
+  "findings": [
+    {
+      "control_id": "data_location",
+      "status": "evidence_found",
+      "requirement": "Primary customer-data stores for the reviewed production service must be located in India.",
+      "explanation": "The asset register for October 2026 confirms that the active primary customer database is located in Mumbai, India, and its active read replica is located in Delhi, India, meeting the policy requirement.",
+      "next_action": "Record the control as satisfied for the October 2026 review period and verify data locations during the next scheduled vendor assessment.",
+      "follow_up_question": "Can Nimbus Support confirm whether any changes to the hosting regions for primary customer-data stores are planned for the upcoming review period?",
+      "id": "finding-data_location",
+      "control_name": "Customer data location",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "26c9b3e3295b4c3a9a327cfa41afb6a4",
+          "document_name": "policy-v3.pdf",
+          "page": 1,
+          "quote": "Primary customer-data stores for the reviewed production service must be located in India.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "b346f6a4d88b445480391c47cd99e3db",
+          "document_name": "questionnaire-202610.pdf",
+          "page": 1,
+          "quote": "For October 2026, all production customer data and all production customer-data backups for Aster Finance's Customer Support Platform are stored only in India.",
+          "role": "claim",
+          "valid": true
+        },
+        {
+          "document_id": "f1ecfdc5ac7448039a961b77ffac96f7",
+          "document_name": "primary-assets-202610.pdf",
+          "page": 1,
+          "quote": "The active primary customer database CST-PROD-01 is physically stored in Mumbai, India (asia-south1), and its active read replica CST-PROD-02 is in Delhi, India (asia-south2).",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "backup_location",
+      "status": "conflicting_evidence",
+      "requirement": "All customer-data backups, including temporary replicas, disaster-recovery copies, and archived snapshots, for the Customer Support Platform production service must remain physically stored in India throughout October 2026.",
+      "explanation": "The vendor claims in questionnaire-202610.pdf (page 1) that all production customer-data backups and disaster-recovery replicas are stored exclusively in India. However, the operational record in backup-inventory-202610.pdf (page 2) confirms that replica BKP-SG-02 contains production customer-data backups stored in Singapore (asia-southeast1), directly conflicting with the vendor claim and violating the policy requirement.",
+      "next_action": "Request clarification from the vendor regarding the offshore backup replica located in Singapore and establish a remediation plan to relocate it to India.",
+      "follow_up_question": "Why is production customer-data backup replica BKP-SG-02 stored in Singapore despite the requirement and statement that all backups remain in India?",
+      "id": "finding-backup_location",
+      "control_name": "Backup location",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "26c9b3e3295b4c3a9a327cfa41afb6a4",
+          "document_name": "policy-v3.pdf",
+          "page": 1,
+          "quote": "All customer-data backups for Nimbus Support's Customer Support Platform production service must remain physically stored in India throughout October 2026.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "26c9b3e3295b4c3a9a327cfa41afb6a4",
+          "document_name": "policy-v3.pdf",
+          "page": 1,
+          "quote": "A record of primary storage in India does not establish the location of backup replicas. Temporary replicas, disaster-recovery copies and archived customer-data snapshots are included in the backup requirement.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "b346f6a4d88b445480391c47cd99e3db",
+          "document_name": "questionnaire-202610.pdf",
+          "page": 1,
+          "quote": "For October 2026, all production customer data and all production customer-data backups for Aster Finance's Customer Support Platform are stored only in India.\nThis answer includes all disaster-recovery replicas, archived customer snapshots and temporary recovery copies. No offshore customer-data backup location is declared.",
+          "role": "claim",
+          "valid": true
+        },
+        {
+          "document_id": "563d60f813e144469ea43525e0a45e3c",
+          "document_name": "backup-inventory-202610.pdf",
+          "page": 1,
+          "quote": "Backup set BKP-IN-01 is located in Mumbai, India (asia-south1). It receives nightly encrypted snapshots of CST-PROD-01 with a retention period of 30 days.",
+          "role": "record",
+          "valid": true
+        },
+        {
+          "document_id": "563d60f813e144469ea43525e0a45e3c",
+          "document_name": "backup-inventory-202610.pdf",
+          "page": 2,
+          "quote": "Replica BKP-SG-02 contains Aster Finance production customer-data backups for the Customer Support Platform and is stored in Singapore (asia-southeast1).",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "deletion",
+      "status": "not_evidenced",
+      "requirement": "Provide a completed deletion certificate for request DEL-2026-041 covering Aster Finance production customer data across primary stores and backups, including execution date, scope, and approver.",
+      "explanation": "No completed deletion certificate or execution log has been provided for request DEL-2026-041. Records indicate the request remains open, and while the vendor acknowledges the request, required completion evidence covering primary stores and backups has not been submitted.",
+      "next_action": "Request the finalized deletion certificate and execution log for DEL-2026-041 from the vendor.",
+      "follow_up_question": "Can you provide the completed deletion certificate for request DEL-2026-041 confirming removal from both primary stores and backups, including execution date, scope, and approver?",
+      "id": "finding-deletion",
+      "control_name": "Deletion evidence",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "26c9b3e3295b4c3a9a327cfa41afb6a4",
+          "document_name": "policy-v3.pdf",
+          "page": 2,
+          "quote": "Provide a completed deletion certificate for request DEL-2026-041 covering Aster Finance production customer data, primary stores and backups, with execution date, scope and approver.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "b346f6a4d88b445480391c47cd99e3db",
+          "document_name": "questionnaire-202610.pdf",
+          "page": 2,
+          "quote": "The request for completed deletion evidence DEL-2026-041 remains open. A retention schedule describes intended periods but is not an execution certificate.",
+          "role": "claim",
+          "valid": true
+        },
+        {
+          "document_id": "91ade016a9e24d24810be54d9ec39121",
+          "document_name": "evidence-register-202610.pdf",
+          "page": 1,
+          "quote": "No completed deletion certificate or execution log for production request DEL-2026-041 has been supplied in this review pack. DEL-2026-041 requested removal of closed production customer records from primary stores and backups. The vendor has acknowledged the request but has not supplied the required completion evidence.",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "access_review",
+      "status": "evidence_found",
+      "requirement": "Provide an approved access review completed within the last 90 days that covers all privileged production accounts and records removals or an explicit no-removal decision.",
+      "explanation": "Operational records from access-review-202610.pdf show that all 12 privileged production accounts were reviewed on October 8, 2026, with 11 accounts retained and one dormant account revoked and completed. The review was signed and approved by the security approver on October 9, 2026, satisfying the requirement within the 90-day window for October 2026.",
+      "next_action": "Log the access review as verified for the October 2026 review period.",
+      "follow_up_question": "None required at this time.",
+      "id": "finding-access_review",
+      "control_name": "Access reviews",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "26c9b3e3295b4c3a9a327cfa41afb6a4",
+          "document_name": "policy-v3.pdf",
+          "page": 2,
+          "quote": "Provide an approved access review completed in the last 90 days that covers all privileged production accounts and records removals or an explicit no-removal decision.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "5a2920e1e83748f484d1acd6b682a9d8",
+          "document_name": "access-review-202610.pdf",
+          "page": 1,
+          "quote": "On 8 October 2026, the service owner reviewed all 12 privileged production accounts, retained 11 and revoked one dormant account; the security approver signed the completed review on 9 October 2026. Revoked account: svc-legacy-export. Revocation completed 8 October 2026 at 14:22 UTC. Retained accounts: 4 database administrators, 3 infrastructure operators, 2 incident responders and 2 approved service identities.",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "incident_response",
+      "status": "evidence_found",
+      "requirement": "A signed service commitment must require notification to Aster Finance within 24 hours of discovering a customer-data incident and identify a monitored incident contact.",
+      "explanation": "A signed service commitment in incident-addendum-202610.pdf (page 1) obligates Nimbus Support to notify Aster Finance within 12 hours of discovering a customer-data incident on the Customer Support Platform production service. This stricter 12-hour notification timeline satisfies the maximum 24-hour requirement, and the document explicitly designates incident-desk@nimbus.example as the continuously staffed monitored incident contact.",
+      "next_action": "Record the control as met based on the executed service commitment.",
+      "follow_up_question": "None at this time.",
+      "id": "finding-incident_response",
+      "control_name": "Incident response",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "26c9b3e3295b4c3a9a327cfa41afb6a4",
+          "document_name": "policy-v3.pdf",
+          "page": 3,
+          "quote": "A signed service commitment must require notification to Aster Finance within 24 hours of discovering a customer-data incident and identify a monitored incident contact.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "b346f6a4d88b445480391c47cd99e3db",
+          "document_name": "questionnaire-202610.pdf",
+          "page": 2,
+          "quote": "Incident notification: signed service addendum requires notice within 12 hours.",
+          "role": "claim",
+          "valid": true
+        },
+        {
+          "document_id": "ccffd3c754c649b49a229493604ccb4e",
+          "document_name": "incident-addendum-202610.pdf",
+          "page": 1,
+          "quote": "Nimbus Support must notify Aster Finance within 12 hours of discovering a customer-data incident affecting the Customer Support Platform production service; the monitored contact is incident-desk@nimbus.example. The incident desk is staffed continuously. Nimbus must provide an initial impact statement, then updates every 24 hours until containment.",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    },
+    {
+      "control_id": "evidence_currency",
+      "status": "evidence_found",
+      "requirement": "Operational evidence used for this review must be dated within 90 days of 15 October 2026 and identify the same vendor, service, and production environment, excluding superseded records.",
+      "explanation": "According to the evidence register, all received evidence items are dated between 1 October and 12 October 2026, which falls well within the required 90-day window of 15 October 2026 for the production Customer Support Platform.",
+      "next_action": "Proceed with evaluating the detailed operational evidence artifacts against their respective controls.",
+      "follow_up_question": "Can the vendor confirm that no newer or superseding operational records have been issued since 12 October 2026 for the production Customer Support Platform?",
+      "id": "finding-evidence_currency",
+      "control_name": "Evidence currency",
+      "policy_version": "3.0",
+      "citations": [
+        {
+          "document_id": "26c9b3e3295b4c3a9a327cfa41afb6a4",
+          "document_name": "policy-v3.pdf",
+          "page": 3,
+          "quote": "Operational evidence used for this review must be dated within 90 days of 15 October 2026 and identify the same vendor, service and production environment; superseded records must be excluded.",
+          "role": "requirement",
+          "valid": true
+        },
+        {
+          "document_id": "91ade016a9e24d24810be54d9ec39121",
+          "document_name": "evidence-register-202610.pdf",
+          "page": 1,
+          "quote": "Received: current signed questionnaire dated 10 October, current backup inventory dated 12 October, primary asset register dated 11 October, completed access review dated 9 October, and executed incident addendum effective 1 October 2026.",
+          "role": "record",
+          "valid": true
+        }
+      ],
+      "reviewer": {
+        "decision": "unreviewed",
+        "note": "",
+        "at": null
+      }
+    }
+  ],
+  "documents": [
+    {
+      "id": "26c9b3e3295b4c3a9a327cfa41afb6a4",
+      "name": "policy-v3.pdf",
+      "sha256": "d6679f631290b6c259ad3ef350b6b26f7a067a9bfc412339fca735daed7f8556",
+      "page_count": 3,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "October 2026",
+        "version": "3.0",
+        "document_type": "policy",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Internal review policy for Aster Finance covering Nimbus Support's Customer Support Platform production environment for October 2026."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "b346f6a4d88b445480391c47cd99e3db",
+      "name": "questionnaire-202610.pdf",
+      "sha256": "049514b758db709dd4c797ea6d91d022265f6efb3f01d8395355e10ec5643d19",
+      "page_count": 2,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "October 2026",
+        "version": "questionnaire-202610",
+        "document_type": "questionnaire",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Signed questionnaire responses from Nimbus Support for Aster Finance's Customer Support Platform production service for October 2026."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "563d60f813e144469ea43525e0a45e3c",
+      "name": "backup-inventory-202610.pdf",
+      "sha256": "027ced4de34dd41c402ff7f440cdf1c08245c5034926bb739e9d221a7bf40798",
+      "page_count": 2,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "1-31 October 2026",
+        "version": "INV-2026-10",
+        "document_type": "inventory",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Production backup inventory verified 12 October 2026 covering the reviewed vendor, service, and environment."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "f1ecfdc5ac7448039a961b77ffac96f7",
+      "name": "primary-assets-202610.pdf",
+      "sha256": "48e830d7d68e51dca23dd80752dc20cc19f27769517cd3d89261f374ed62e011",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "October 2026",
+        "version": "primary-assets-202610",
+        "document_type": "inventory",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Asset register verified 11 October 2026 covering active primary production stores for the reviewed service."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "5a2920e1e83748f484d1acd6b682a9d8",
+      "name": "access-review-202610.pdf",
+      "sha256": "3aa3b8350797a0ec42fb516e0e3501a74eef27eace4d97dbace7038269365c90",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "access-review-202610",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Matches Nimbus Support Customer Support Platform production privileged access review conducted in October 2026."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "ccffd3c754c649b49a229493604ccb4e",
+      "name": "incident-addendum-202610.pdf",
+      "sha256": "c26297435bec29fa2101af30b834632951e50b27dd31fb15d45b5f10921db2e0",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10-01 to 2027-09-30",
+        "version": "IA-2026-10",
+        "document_type": "signed_commitment",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Executed incident notification addendum for Customer Support Platform production and backups effective October 2026."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "91ade016a9e24d24810be54d9ec39121",
+      "name": "evidence-register-202610.pdf",
+      "sha256": "30f617aa5e29917f85b81e1c0fa6e5ead4225e304fd8f1b3a689ecbbafee299e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "v3.0",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "applicable",
+        "scope_reason": "Buyer vendor risk analyst register of received evidence and open requests for the October 2026 review."
+      },
+      "scope_exclusion": null,
+      "suspicious_instructions": false
+    },
+    {
+      "id": "a0b94cb0632247fca5565be78235c6cd",
+      "name": "old-questionnaire-202501.pdf",
+      "sha256": "a4b41ea5a985cbfeac02e53de4ad6dec2ffe8d78e0dda33031fda9bbc4eb7e43",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "Customer Support Platform",
+        "environment": "production",
+        "period": "2025-01",
+        "version": "v1.4",
+        "document_type": "questionnaire",
+        "currency": "superseded",
+        "scope_status": "out_of_scope",
+        "scope_reason": "Explicitly archived and superseded questionnaire from January 2025, retired 1 October 2026."
+      },
+      "scope_exclusion": "Document identifies itself as superseded.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "6edf727287734bb5aeeaa3083188827d",
+      "name": "other-vendor-deletion.pdf",
+      "sha256": "58261eeb05b784ba135fe1b861de95bbb4c24ebe82eec3daa6e8be412e36333e",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Cedar Analytics",
+        "service": "Marketing Insights",
+        "environment": "production",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "operational_record",
+        "currency": "current",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document pertains to Cedar Analytics and Marketing Insights, explicitly stating it does not cover Nimbus Support or Customer Support Platform."
+      },
+      "scope_exclusion": "The document pertains to Cedar Analytics and Marketing Insights, explicitly stating it does not cover Nimbus Support or Customer Support Platform.",
+      "suspicious_instructions": false
+    },
+    {
+      "id": "e9148a1d6837430ba3096a8575d64c90",
+      "name": "untrusted-attachment.pdf",
+      "sha256": "6632b1b68d6da2dd5bdf35cdda7642154910caa6bc263009a5131354533394f3",
+      "page_count": 1,
+      "status": "processed",
+      "context": {
+        "vendor": "Nimbus Support",
+        "service": "",
+        "environment": "",
+        "period": "2026-10",
+        "version": "",
+        "document_type": "other",
+        "currency": "unknown",
+        "scope_status": "out_of_scope",
+        "scope_reason": "The document is an untrusted forwarded operations attachment with unverified source authenticity that does not provide valid operational records, commitments, or policies."
+      },
+      "scope_exclusion": "The document is an untrusted forwarded operations attachment with unverified source authenticity that does not provide valid operational records, commitments, or policies.",
+      "suspicious_instructions": true
+    }
+  ]
+}

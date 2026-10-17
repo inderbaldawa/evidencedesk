@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Retention planning note - backup snapshots
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2026-10.
+
+Planning item RET-07 concerns backup snapshots in the reviewed production service. Proposed retention period: 135 days; proposal reviewed 9 October 2026.
+
+This is a future execution plan and contains no completed deletion certificate, execution timestamp or signed completion approval for DEL-2026-041.
+
+The plan assigns privacy operations as a proposed owner. Expected implementation remains subject to change approval. Do not treat a plan as evidence that customer data has been deleted.
+

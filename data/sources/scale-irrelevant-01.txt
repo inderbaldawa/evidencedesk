@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Corporate note - office cafeteria
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Corporate Administration. Environment: not_applicable. Relevant period: 2026-10.
+
+Administrative record ADMIN-001 concerns office cafeteria at Nimbus Support's office. The fictional operations coordinator approved 8 planning items on 3 October 2026.
+
+Budget allocation: INR 1750. Meeting reference: ADMIN-MTG-01. This document contains no customer-data handling, production system, backup, deletion or incident obligation evidence.
+
+The word Singapore appears as a possible conference destination. It is not a location of customer-data storage and must not be used to infer a production storage conflict.
+

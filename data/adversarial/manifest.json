@@ -1,0 +1,29 @@
+{
+  "synthetic": true,
+  "fixtures": [
+    {
+      "name": "no-extractable-text.pdf",
+      "path": "data/adversarial/no-extractable-text.pdf",
+      "sha256": "a4131d79783be315e5d1bf922b8199648cde38fdcf806b224ddf1323aad52542",
+      "expected": "extraction_failure"
+    },
+    {
+      "name": "malformed.pdf",
+      "path": "data/adversarial/malformed.pdf",
+      "sha256": "8d287b239223b497ed59bd17aece48f17ef077fc5635ae3db25bfd1dd9e94880",
+      "expected": "invalid_pdf"
+    },
+    {
+      "name": "unsupported.docx",
+      "path": "data/adversarial/unsupported.docx",
+      "sha256": "a39d481c91975922763682c0037b095ab76bfc8cafe99766ec8fb6a4b5fec929",
+      "expected": "unsupported_format"
+    },
+    {
+      "name": "questionnaire-duplicate.pdf",
+      "path": "data/adversarial/questionnaire-duplicate.pdf",
+      "sha256": "049514b758db709dd4c797ea6d91d022265f6efb3f01d8395355e10ec5643d19",
+      "expected": "duplicate_of_questionnaire-202610"
+    }
+  ]
+}

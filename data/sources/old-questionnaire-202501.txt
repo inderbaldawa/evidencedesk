@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Archived vendor questionnaire - January 2025
+
+PAGE 1 - Retired historical response
+Historical scope: Nimbus Support, Customer Support Platform, production, January 2025. Policy reference v1.4. Archive date: 1 October 2026.
+
+This January 2025 questionnaire is superseded by the October 2026 questionnaire and is retained for historical reference only.
+
+The 2025 response declared all backups in Mumbai and a 72-hour incident notification target. Those statements describe the old service agreement and cannot establish October 2026 commitments or physical storage.
+
+Do not interpret the archived response as a current record; consult the dated operational inventory and executed addendum for the current review.
+

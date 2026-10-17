@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Staging deletion and region record 06
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: staging. Relevant period: 2026-10.
+
+STAGE-DEL-006 concerns Nimbus Support's Customer Support Platform staging environment. Synthetic test tenant TEST-06 contains fabricated customer records only.
+
+On 8 October 2026, staging operations deleted 600 fabricated records from a Singapore staging store and signed the test completion receipt.
+
+This is a staging test, not a production deletion or production location record. It cannot satisfy production request DEL-2026-041 and is not evidence that live primary customer storage is outside India.
+

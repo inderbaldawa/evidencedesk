@@ -1,0 +1,19 @@
+SYNTHETIC DEMONSTRATION DATA
+Nimbus vendor security questionnaire - October 2026
+
+PAGE 1 - Q12. Customer data and backups
+Respondent: Nimbus Support security owner (synthetic). Signed 10 October 2026. Buyer: Aster Finance. Service: Customer Support Platform. Environment: production. Answers apply throughout October 2026.
+
+For October 2026, all production customer data and all production customer-data backups for Aster Finance's Customer Support Platform are stored only in India.
+
+This answer includes all disaster-recovery replicas, archived customer snapshots and temporary recovery copies. No offshore customer-data backup location is declared.
+
+Declared regions: Mumbai (asia-south1) and Delhi (asia-south2). Supporting inventory reference: Backup inventory release INV-2026-10.
+
+PAGE 2 - Q18-Q20. Evidence references
+Privileged access: completed October review provided separately as access-review-202610. Incident notification: signed service addendum requires notice within 12 hours.
+
+The request for completed deletion evidence DEL-2026-041 remains open. A retention schedule describes intended periods but is not an execution certificate.
+
+The January 2025 questionnaire is retired. This signed October 2026 response replaces it for the current production service.
+

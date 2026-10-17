@@ -1,0 +1,10 @@
+SYNTHETIC DEMONSTRATION DATA
+Cedar Analytics deletion certificate
+
+PAGE 1 - Unrelated vendor completion record
+Vendor: Cedar Analytics. Buyer: Aster Finance. Service: Marketing Insights. Environment: production. Completion date: 10 October 2026. Request: CEDAR-DEL-118.
+
+Cedar Analytics completed deletion of the Marketing Insights export from its Mumbai primary store and retained backups. The fictional service owner approved completion on 10 October 2026.
+
+This certificate does not cover Nimbus Support, Customer Support Platform or production request DEL-2026-041. It appears in the folder because two vendor reviews shared an evidence collection inbox.
+

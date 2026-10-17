@@ -1,0 +1,49 @@
+{
+  "status": "incomplete",
+  "coverage": {
+    "submitted": 7,
+    "processed": 3,
+    "failed": 3,
+    "duplicates": 1,
+    "pages": 7
+  },
+  "http_to_result_seconds": 46.535,
+  "analysis": {
+    "model": "gemini-3.8-flash",
+    "version": "evidencedesk-1.1",
+    "generated_at": "2026-10-17T06:35:27.508651+00:00",
+    "duration_seconds": 45.918,
+    "calls": 6,
+    "input_tokens": 10341,
+    "output_tokens": 3495,
+    "estimated_cost_usd": 0.041724,
+    "label": "AI-assisted evidence review; human decision required",
+    "cache_hits": 0,
+    "reconciliation_cache_hits": 0,
+    "reconciliation_versions": {
+      "data_location": "evidencedesk-reconcile-1.2",
+      "backup_location": "evidencedesk-reconcile-1.2",
+      "deletion": "evidencedesk-reconcile-1.2",
+      "access_review": "evidencedesk-reconcile-1.2",
+      "incident_response": "evidencedesk-reconcile-1.2"
+    },
+    "coverage": {
+      "submitted": 7,
+      "processed": 3,
+      "failed": 3,
+      "duplicates": 1,
+      "excluded_scope": 0,
+      "pages": 7
+    },
+    "errors": [],
+    "citation_validation_failures": [],
+    "complete": false,
+    "stale": false
+  },
+  "isolation": "three private routes denied to second identity",
+  "source_bytes_match": true,
+  "decision_exported": true,
+  "pdf_exported": true,
+  "synthetic": true,
+  "source_artifact_sha256": "79f6eb93d979a1f05f46cb0bcb76c73231a7240ab8a6cd6bc9f98ddf8e7d3f94"
+}

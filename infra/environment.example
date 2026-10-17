@@ -1,0 +1,16 @@
+# Runtime identities supply ADC. Never set GOOGLE_APPLICATION_CREDENTIALS in Cloud Run.
+GOOGLE_CLOUD_PROJECT=your-gcp-project
+GOOGLE_CLOUD_LOCATION=global
+EVIDENCEDESK_REGION=asia-south1
+EVIDENCEDESK_STORAGE=cloud
+FIRESTORE_DATABASE=evidencedesk
+EVIDENCEDESK_BUCKET=your-gcp-project-evidencedesk
+EVIDENCEDESK_JOB=evidencedesk-worker
+EVIDENCEDESK_BUDGET_BACKEND=firestore
+EVIDENCEDESK_BUDGET_DOCUMENT=budgets/development
+EVIDENCEDESK_DATA_DIR=/tmp/evidencedesk
+# Web only, rendered as JSON environment values by render-env.py:
+EVIDENCEDESK_AUTH=firebase
+FIREBASE_WEB_CONFIG=<dedicated public Firebase web configuration JSON>
+# Worker only, after the explicitly approved ledger exists:
+EVIDENCEDESK_ENABLE_AI=1

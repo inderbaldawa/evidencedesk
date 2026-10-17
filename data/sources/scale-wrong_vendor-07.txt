@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Elm Identity completion certificate
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Elm Identity. Service: Identity Service. Environment: production. Relevant period: 2026-10.
+
+Certificate OTHER-DEL-007 applies to Elm Identity's Identity Service for Aster Finance. Fictional approver signed completion on 9 October 2026.
+
+Deletion completed for 2177 records from the unrelated service's primary and backup stores. The record identifies a separate service contract and tenant namespace OTHER-07.
+
+This evidence does not apply to Nimbus Support's Customer Support Platform or request DEL-2026-041, despite being current and naming the same buyer.
+

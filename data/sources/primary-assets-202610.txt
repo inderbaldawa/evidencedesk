@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Primary customer-data asset register
+
+PAGE 1 - Current production assets
+Asset register verified 11 October 2026 by the Nimbus Support service owner for Aster Finance's Customer Support Platform production service.
+
+The active primary customer database CST-PROD-01 is physically stored in Mumbai, India (asia-south1), and its active read replica CST-PROD-02 is in Delhi, India (asia-south2).
+
+These stores contain production customer ticket content and identifiers for October 2026. Their encrypted storage volumes and search index are in India.
+
+This register covers active primary stores only. Backup and disaster-recovery copies are governed by the separate production backup inventory.
+

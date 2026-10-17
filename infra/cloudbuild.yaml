@@ -1,0 +1,11 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ['build', '--platform=linux/amd64', '--file=infra/Dockerfile', '--tag=${_IMAGE}', '.']
+images: ['${_IMAGE}']
+serviceAccount: projects/${PROJECT_ID}/serviceAccounts/evidencedesk-build@${PROJECT_ID}.iam.gserviceaccount.com
+timeout: 1200s
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: E2_MEDIUM
+substitutions:
+  _IMAGE: asia-south1-docker.pkg.dev/${PROJECT_ID}/evidencedesk/app:review-required

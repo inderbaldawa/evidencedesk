@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Willow Messaging completion certificate
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Willow Messaging. Service: Messaging Service. Environment: production. Relevant period: 2026-10.
+
+Certificate OTHER-DEL-003 applies to Willow Messaging's Messaging Service for Aster Finance. Fictional approver signed completion on 5 October 2026.
+
+Deletion completed for 933 records from the unrelated service's primary and backup stores. The record identifies a separate service contract and tenant namespace OTHER-03.
+
+This evidence does not apply to Nimbus Support's Customer Support Platform or request DEL-2026-041, despite being current and naming the same buyer.
+

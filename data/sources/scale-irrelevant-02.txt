@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Corporate note - travel budget
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Corporate Administration. Environment: not_applicable. Relevant period: 2026-10.
+
+Administrative record ADMIN-002 concerns travel budget at Nimbus Support's office. The fictional operations coordinator approved 9 planning items on 4 October 2026.
+
+Budget allocation: INR 3500. Meeting reference: ADMIN-MTG-02. This document contains no customer-data handling, production system, backup, deletion or incident obligation evidence.
+
+The word Singapore appears as a possible conference destination. It is not a location of customer-data storage and must not be used to infer a production storage conflict.
+

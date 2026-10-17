@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Service dependency declaration - metrics aggregation
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2026-10.
+
+Declaration DEP-03 identifies the metrics aggregation component operated within Nimbus Support's production service. Scope checked on 5 October 2026.
+
+Tenant-bound output for this component remains in India. The component processes pseudonymous event identifiers and uses the same Aster Finance tenant boundary.
+
+This limited declaration does not cover the offshore disaster-recovery backup replica and cannot substitute for the complete backup inventory. No additional deletion completion evidence is attached.
+

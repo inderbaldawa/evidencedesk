@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Access review annex - audit readers
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2026-10.
+
+Annex AR-ANNEX-07 documents the audit readers entitlement check for the October privileged access review. Snapshot taken 8 October 2026.
+
+Reviewer checked 9 permission bindings against approved role definitions, removed 0 dormant binding and accepted the remaining bindings for business need.
+
+Bindings may belong to the same account across annexes. Do not add annex counts to infer an account total. The completed main review covers all 12 privileged accounts and its approver signed on 9 October 2026.
+

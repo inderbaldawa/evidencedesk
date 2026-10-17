@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Backup replication job - escalation events
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2026-10.
+
+Job REP-007 completed on 9 October 2026. Payload: escalation events for Aster Finance's production Customer Support Platform; 949 MiB transferred.
+
+Source backup set BKP-IN-01 is in Mumbai, India. Destination replica BKP-SG-02 is physically stored in Singapore (asia-southeast1). The payload contains identifiable production customer data.
+
+Checksum validation passed for partition 7. Replica retention is 30 days. This record covers the current October 2026 service; it is not a staging export or an earlier inventory.
+

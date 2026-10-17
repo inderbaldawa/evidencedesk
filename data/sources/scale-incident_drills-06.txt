@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Incident tabletop - misdirected attachment
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2026-10.
+
+Exercise EX-06 simulated misdirected attachment on 8 October 2026. This was a tabletop exercise, not a real incident.
+
+The operations team contacted the synthetic incident desk after 54 minutes and completed the customer impact worksheet after 101 minutes.
+
+The exercise uses incident-desk@nimbus.example as its continuously monitored escalation route. The signed addendum contains the 12-hour notification obligation; a tabletop timing alone is not a contract.
+

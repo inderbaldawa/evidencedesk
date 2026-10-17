@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Completed privileged access review
+
+PAGE 1 - Review completion and approval
+Review AR-2026-10 covers Nimbus Support's Customer Support Platform production service for Aster Finance, including database, backup operations and platform administration roles.
+
+On 8 October 2026, the service owner reviewed all 12 privileged production accounts, retained 11 and revoked one dormant account; the security approver signed the completed review on 9 October 2026.
+
+Revoked account: svc-legacy-export. Revocation completed 8 October 2026 at 14:22 UTC. Retained accounts: 4 database administrators, 3 infrastructure operators, 2 incident responders and 2 approved service identities.
+
+Evidence attached in this synthetic record: entitlement snapshot AR-SNAPSHOT-08 and revocation ticket ACC-189. Review owner and security approver are fictional role holders.
+

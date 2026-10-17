@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Pine Reports completion certificate
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Pine Reports. Service: Reports Service. Environment: production. Relevant period: 2026-10.
+
+Certificate OTHER-DEL-008 applies to Pine Reports's Reports Service for Aster Finance. Fictional approver signed completion on 10 October 2026.
+
+Deletion completed for 2488 records from the unrelated service's primary and backup stores. The record identifies a separate service contract and tenant namespace OTHER-08.
+
+This evidence does not apply to Nimbus Support's Customer Support Platform or request DEL-2026-041, despite being current and naming the same buyer.
+

@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Change approval - report styling
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2026-10.
+
+Change CHG-208 approved 10 October 2026 for report styling within the current production service. The fictional change board recorded a 55-minute maintenance window.
+
+This change does not approve relocation of backups outside India and does not waive policy v3.0. Customer-data geography remains subject to the operational inventory and internal policy.
+
+Rollback owner: service operations role 8. Completion evidence covers this configuration change only, not deletion request DEL-2026-041 or a blanket certification of vendor compliance.
+

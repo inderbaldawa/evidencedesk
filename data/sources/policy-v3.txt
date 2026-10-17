@@ -1,0 +1,32 @@
+SYNTHETIC DEMONSTRATION DATA
+Customer-data handling policy v3.0
+
+PAGE 1 - 1. Scope and storage requirements
+Approved internal policy of the fictional buyer Aster Finance. Effective 1 October 2026. Approver: Aster Finance Risk Committee (synthetic). Review period: October 2026. This is an internal contractual review standard, not a statement of universal legal requirements.
+
+Scope: Nimbus Support, Customer Support Platform, production environment, all Aster Finance customer records and their backups. Primary storage and backup storage are separate controls.
+
+Primary customer-data stores for the reviewed production service must be located in India.
+
+All customer-data backups for Nimbus Support's Customer Support Platform production service must remain physically stored in India throughout October 2026.
+
+A record of primary storage in India does not establish the location of backup replicas. Temporary replicas, disaster-recovery copies and archived customer-data snapshots are included in the backup requirement.
+
+PAGE 2 - 2. Deletion and privileged access evidence
+Provide a completed deletion certificate for request DEL-2026-041 covering Aster Finance production customer data, primary stores and backups, with execution date, scope and approver.
+
+A planned deletion, retention policy, contractual promise or deletion receipt for a different vendor, service, environment or request does not satisfy this evidence requirement. Lack of evidence is not proof that deletion did not happen.
+
+Provide an approved access review completed in the last 90 days that covers all privileged production accounts and records removals or an explicit no-removal decision.
+
+The access review must identify an approver and completion date. A role catalogue or planned review alone does not prove completion.
+
+PAGE 3 - 3. Incident commitments and evidence currency
+A signed service commitment must require notification to Aster Finance within 24 hours of discovering a customer-data incident and identify a monitored incident contact.
+
+Operational evidence used for this review must be dated within 90 days of 15 October 2026 and identify the same vendor, service and production environment; superseded records must be excluded.
+
+A current signed contract remains applicable during its effective term. Archived historical documents may explain history but must not override current records. Failed ingestion must remain an unresolved coverage limitation.
+
+Controls: data_location, backup_location, deletion, access_review, incident_response, evidence_currency. A reviewer must record decisions separately from automated evidence analysis.
+

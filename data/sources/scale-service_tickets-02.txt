@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Service ticket - queue lag
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2026-10.
+
+Ticket OPS-402 reports queue lag in Aster Finance's Customer Support Platform production tenant on 4 October 2026. Severity: S3.
+
+Service restored after 29 minutes by applying a configuration correction. The incident coordinator recorded no confirmed customer-data exposure in this synthetic ticket.
+
+This ticket is operational context, not a signed incident notification obligation. It does not attest to backup geography or deletion completion. A normal service ticket is not proof that all security controls are met.
+

@@ -1,0 +1,7 @@
+.local/
+.stage/
+__pycache__/
+*.pyc
+firebase-web-config.json
+*-env.json
+*-ledger.json

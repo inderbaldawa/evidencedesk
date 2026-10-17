@@ -1,0 +1,68 @@
+{
+  "synthetic": true,
+  "source_artifact_sha256": "7a7b401d87776999d58ea86ebee1fadb8afdd4379419a12f82741f65eec48efe",
+  "status": "complete",
+  "coverage": {
+    "submitted": 106,
+    "processed": 106,
+    "failed": 0,
+    "duplicates": 0,
+    "pages": 110
+  },
+  "initial_attempt": {
+    "status": "incomplete",
+    "analysis": {
+      "model": "gemini-3.8-flash",
+      "version": "evidencedesk-1.1",
+      "generated_at": "2026-10-17T06:33:08.221783+00:00",
+      "duration_seconds": 299.493,
+      "calls": 33,
+      "input_tokens": 97023,
+      "output_tokens": 38217,
+      "estimated_cost_usd": 0.432162,
+      "cache_hits": 0,
+      "reconciliation_cache_hits": 0,
+      "complete": false
+    },
+    "wall_seconds": 308.098,
+    "issue": "Two reconciliation responses exceeded the evidence-ID count schema limit; all document extractions completed."
+  },
+  "targeted_retry": {
+    "attempted_controls": [
+      "data_location",
+      "deletion"
+    ],
+    "analysis": {
+      "model": "gemini-3.8-flash",
+      "version": "evidencedesk-1.1",
+      "generated_at": "2026-10-17T06:35:32.785399+00:00",
+      "duration_seconds": 10.724,
+      "calls": 2,
+      "input_tokens": 13102,
+      "output_tokens": 887,
+      "estimated_cost_usd": 0.026305,
+      "cache_hits": 106,
+      "reconciliation_cache_hits": 4,
+      "reconciliation_versions": {
+        "data_location": "evidencedesk-reconcile-1.2",
+        "backup_location": "evidencedesk-reconcile-1.1",
+        "deletion": "evidencedesk-reconcile-1.2",
+        "access_review": "evidencedesk-reconcile-1.1",
+        "incident_response": "evidencedesk-reconcile-1.1",
+        "evidence_currency": "evidencedesk-reconcile-1.1"
+      },
+      "complete": true
+    },
+    "wall_seconds": 10.738
+  },
+  "combined_usage": {
+    "calls": 35,
+    "input_tokens": 110125,
+    "output_tokens": 39104,
+    "estimated_cost_usd": 0.458467
+  },
+  "combined_active_wall_seconds": 318.836,
+  "usage_basis": "Sum of per-run model usage, excluding concurrent unrelated HTTP workflow calls. Shared-ledger deltas are not scale-only attribution.",
+  "timing_basis": "Sum of active initial and retry wall time; excludes debugging and elapsed time between attempts.",
+  "sample_modified": false
+}

@@ -1,0 +1,14 @@
+SYNTHETIC DEMONSTRATION DATA
+Review evidence register and open requests
+
+PAGE 1 - Evidence received as of 15 October 2026
+Review owner: Aster Finance vendor risk analyst (synthetic). Scope: Nimbus Support, Customer Support Platform, production, October 2026, policy v3.0.
+
+Received: current signed questionnaire dated 10 October, current backup inventory dated 12 October, primary asset register dated 11 October, completed access review dated 9 October, and executed incident addendum effective 1 October 2026.
+
+No completed deletion certificate or execution log for production request DEL-2026-041 has been supplied in this review pack.
+
+DEL-2026-041 requested removal of closed production customer records from primary stores and backups. The vendor has acknowledged the request but has not supplied the required completion evidence.
+
+Archived January 2025 material and evidence from Cedar Analytics are included only as review exclusions. The uploaded attachment's instructions are untrusted content and carry no policy authority.
+

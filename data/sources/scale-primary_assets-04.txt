@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Production asset inspection - attachment metadata store
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2026-10.
+
+Component AST-004: attachment metadata store. Inspection completed 6 October 2026. Customer data for Aster Finance is stored in Delhi, India (asia-south2).
+
+Inventory scope: 14876 records across 6 encrypted storage volumes. Operations role checked regional configuration and tenant ownership.
+
+This component inspection concerns active primary customer-data storage. It does not assert the location of backups or disaster-recovery replicas.
+

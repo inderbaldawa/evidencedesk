@@ -1,0 +1,12 @@
+SYNTHETIC DEMONSTRATION DATA
+Archived operating review - 2025-11
+
+PAGE 1 - Record scope and evidence
+Buyer: Aster Finance. Vendor: Nimbus Support. Service: Customer Support Platform. Environment: production. Relevant period: 2025-11.
+
+Historical operating review for 2025-11. This version was retired on 1 October 2026 and is superseded by the October inventory, questionnaire and addendum.
+
+The historical service described 9 privileged accounts, Mumbai-only backups and a 72-hour notification target. Those values applied in 2025-11, not October 2026.
+
+Retained for change history. It cannot establish current backup location, current account totals or current contractual notification requirements.
+

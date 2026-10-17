@@ -1,0 +1,44 @@
+{
+  "fixture_version": "synthetic-evidence-v1",
+  "expected_manifest_sha256": "35ac3843f39c2ae94bc2f7851b9cf1b9904babf997a04a1e024dcab38842e2bc",
+  "synthetic": true,
+  "model_calls": 0,
+  "validation": "deterministic generation and pypdf text/page checks only; not AI evaluation",
+  "packs": {
+    "compact": {
+      "documents": 10,
+      "pages": 14,
+      "unique_sha256": 10
+    },
+    "scale": {
+      "documents": 106,
+      "pages": 110,
+      "unique_sha256": 106
+    }
+  },
+  "category_counts": {
+    "core": 10,
+    "primary_assets": 8,
+    "backup_jobs": 8,
+    "access_domains": 8,
+    "incident_drills": 8,
+    "subprocessors": 8,
+    "retention_plans": 8,
+    "wrong_vendor": 8,
+    "wrong_environment": 8,
+    "obsolete": 8,
+    "irrelevant": 8,
+    "service_tickets": 8,
+    "change_approvals": 8
+  },
+  "exact_expected_citations_checked": 13,
+  "all_source_paragraphs_verified": true,
+  "adversarial_files": 4,
+  "duplicate_hash_matches": true,
+  "repeat_generation_identical_pdf_hashes": 119,
+  "visual_review_pages": [
+    "policy-v3:1",
+    "backup-inventory-202610:2"
+  ],
+  "invalid_citation_examples_correctly_invalid": 3
+}

@@ -1,0 +1,21 @@
+SYNTHETIC DEMONSTRATION DATA
+Production backup inventory INV-2026-10
+
+PAGE 1 - 1. Inventory scope and primary backup
+Inventory owner: Nimbus Support infrastructure operations (synthetic). Verified 12 October 2026. Effective inventory window: 1-31 October 2026. Buyer: Aster Finance. Service: Customer Support Platform. Environment: production.
+
+The inventory contains backup copies of production customer tickets, customer contact details and conversation histories for the reviewed service. It excludes staging, anonymized test records and other vendors.
+
+Backup set BKP-IN-01 is located in Mumbai, India (asia-south1). It receives nightly encrypted snapshots of CST-PROD-01 with a retention period of 30 days.
+
+The disaster-recovery replica of this same production backup set appears in section 2 on page 2.
+
+PAGE 2 - 2. Disaster-recovery replica location
+Replica BKP-SG-02 contains Aster Finance production customer-data backups for the Customer Support Platform and is stored in Singapore (asia-southeast1).
+
+Vendor: Nimbus Support. Environment: production. Status: active throughout 1-31 October 2026. Source: BKP-IN-01. Contents: identifiable customer tickets, contact details and conversation histories, not anonymized test data.
+
+Last successful replica synchronization: 12 October 2026 at 02:10 UTC. Retention: 30 days. The location is the physical data storage region, not an administrator's office or network transit route.
+
+This inventory supersedes the July 2026 inventory. The inventory owner has not supplied a policy exception or an approved migration completion record.
+
