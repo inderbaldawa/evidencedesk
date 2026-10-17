@@ -1,0 +1,3 @@
+
+# Preserve source PDF bytes; do not apply text whitespace checks.
+*.pdf binary

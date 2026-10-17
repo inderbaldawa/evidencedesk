@@ -8,6 +8,11 @@
       "sha256": "8257e544f3ad686a03a952283d9321e117b923c62df167d7571fce37678cc49a"
     },
     {
+      "path": ".gitattributes",
+      "bytes": 80,
+      "sha256": "fd8d0e9b47d3c4e79e22e0edce92650c7d59670f4989761cd6ab2ed113104e04"
+    },
+    {
       "path": ".gitignore",
       "bytes": 301,
       "sha256": "ac3f82d3fe5e08b63406d1e2d6b0253c37d2092201695cdc2c4dd9853c764bf2"
